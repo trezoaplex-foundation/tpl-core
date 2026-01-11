@@ -1,4 +1,4 @@
-import { Serializer } from '@metaplex-foundation/umi/serializers';
+import { Serializer } from '@trezoaplex-foundation/umi/serializers';
 
 import {
   Key,

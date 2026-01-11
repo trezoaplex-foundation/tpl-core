@@ -1,11 +1,11 @@
 #![warn(clippy::indexing_slicing)]
-#[cfg(feature = "anchor")]
+#[cfg(feature = "trezoa")]
 use anchor_lang::prelude::AnchorDeserialize;
 use base64::prelude::*;
-#[cfg(not(feature = "anchor"))]
+#[cfg(not(feature = "trezoa"))]
 use borsh::BorshDeserialize;
 use num_traits::FromPrimitive;
-use solana_program::pubkey::Pubkey;
+use trezoa_program::pubkey::Pubkey;
 use std::{cmp::Ordering, collections::HashMap, io::ErrorKind};
 
 use crate::{
@@ -128,7 +128,7 @@ enum ProcessedPlugin {
     Unknown(IndexableUnknownPluginSchemaV1),
 }
 
-impl ProcessedPlugin {
+itpl ProcessedPlugin {
     fn from_data(
         index: u64,
         offset: u64,
@@ -181,7 +181,7 @@ pub struct LifecycleChecks {
     pub burn: Vec<IndexableCheckResult>,
 }
 
-impl LifecycleChecks {
+itpl LifecycleChecks {
     pub fn is_all_empty(&self) -> bool {
         self.create.is_empty()
             && self.update.is_empty()
@@ -198,7 +198,7 @@ pub enum IndexableCheckResult {
     CanReject,
 }
 
-impl From<ExternalCheckResult> for Vec<IndexableCheckResult> {
+itpl From<ExternalCheckResult> for Vec<IndexableCheckResult> {
     fn from(check_result: ExternalCheckResult) -> Self {
         let check_result_bits = ExternalCheckResultBits::from(check_result);
         let mut check_result_vec = vec![];
@@ -221,7 +221,7 @@ struct ExternalPluginDataInfo<'a> {
     data_slice: &'a [u8],
 }
 
-impl ProcessedExternalPlugin {
+itpl ProcessedExternalPlugin {
     fn from_data(
         index: u64,
         offset: u64,
@@ -359,7 +359,7 @@ struct CombinedRecordWithDataInfo<'a> {
     pub record: CombinedRecord<'a>,
 }
 
-impl<'a> CombinedRecordWithDataInfo<'a> {
+itpl<'a> CombinedRecordWithDataInfo<'a> {
     // Associated function for sorting `RegistryRecordIndexable` by offset.
     pub fn compare_offsets(
         a: &CombinedRecordWithDataInfo,
@@ -369,7 +369,7 @@ impl<'a> CombinedRecordWithDataInfo<'a> {
     }
 }
 
-impl IndexableAsset {
+itpl IndexableAsset {
     /// Create a new `IndexableAsset` from a `BaseAssetV1``.  Note this uses a passed-in `seq` rather than
     /// the one contained in `asset` to avoid errors.
     pub fn from_asset(asset: BaseAssetV1, seq: u64) -> Self {

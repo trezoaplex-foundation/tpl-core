@@ -1,13 +1,13 @@
 #![cfg(feature = "test-sbf")]
 pub mod setup;
-use mpl_core::{
+use tpl_core::{
     errors::MplCoreError, instructions::UpdateCollectionInfoV1Builder, types::UpdateType,
 };
 pub use setup::*;
 
-use solana_program::{pubkey::Pubkey, system_instruction::create_account};
-use solana_program_test::tokio;
-use solana_sdk::{pubkey, signature::Keypair, signer::Signer, transaction::Transaction};
+use trezoa_program::{pubkey::Pubkey, system_instruction::create_account};
+use trezoa_program_test::tokio;
+use trezoa_sdk::{pubkey, signature::Keypair, signer::Signer, transaction::Transaction};
 
 pub const BUBBLEGUM_PROGRAM_ADDRESS: Pubkey =
     pubkey!("BGUMAp9Gq7iTEuizy4pqaxsTyUCBK68MDfK752saRPUY");

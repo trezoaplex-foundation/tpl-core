@@ -1,4 +1,4 @@
-import { Context, transactionBuilder } from '@metaplex-foundation/umi';
+import { Context, transactionBuilder } from '@trezoaplex-foundation/umi';
 import { AssetV1, PluginType, revokePluginAuthorityV1 } from '../generated';
 import { ERR_CANNOT_REVOKE } from './errors';
 import { AssetPluginsList, pluginKeyToPluginType } from '../plugins';

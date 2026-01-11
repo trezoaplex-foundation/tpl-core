@@ -1,10 +1,10 @@
 import test from 'ava';
-import { generateSigner } from '@metaplex-foundation/umi';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 import {
   customPdaAllSeedsInit,
   fixedAccountInit,
-  MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
-} from '@metaplex-foundation/mpl-core-oracle-example';
+  TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
+} from '@trezoaplex-foundation/tpl-core-oracle-exatple';
 import {
   canBurn,
   canTransfer,
@@ -347,7 +347,7 @@ test('it can validate non-transferrable asset with oracle', async (t) => {
   const owner = generateSigner(umi);
   const oracle = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account: oracle,
     signer: umi.identity,
@@ -370,7 +370,7 @@ test('it can validate non-transferrable asset with oracle', async (t) => {
         type: 'Oracle',
         baseAddress: oracle.publicKey,
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -394,7 +394,7 @@ test('it can validate transferrable asset with oracle', async (t) => {
   const oracle = generateSigner(umi);
   const oracle2 = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account: oracle,
     signer: umi.identity,
@@ -417,7 +417,7 @@ test('it can validate transferrable asset with oracle', async (t) => {
         type: 'Oracle',
         baseAddress: oracle.publicKey,
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -427,7 +427,7 @@ test('it can validate transferrable asset with oracle', async (t) => {
         type: 'Oracle',
         baseAddress: oracle2.publicKey,
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           update: [CheckResult.CAN_REJECT],
@@ -454,12 +454,12 @@ test('it can validate non-transferrable asset with oracle with recipient seed', 
   const oraclePlugin: OracleInitInfoArgs = {
     type: 'Oracle',
     resultsOffset: {
-      type: 'Anchor',
+      type: 'Trezoa',
     },
     lifecycleChecks: {
       transfer: [CheckResult.CAN_REJECT],
     },
-    baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+    baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
     baseAddressConfig: {
       type: 'CustomPda',
       seeds: [
@@ -470,7 +470,7 @@ test('it can validate non-transferrable asset with oracle with recipient seed', 
         { type: 'Address', pubkey: seedPubkey },
         {
           type: 'Bytes',
-          bytes: Buffer.from('example-seed-bytes', 'utf8'),
+          bytes: Buffer.from('exatple-seed-bytes', 'utf8'),
         },
       ],
     },
@@ -492,7 +492,7 @@ test('it can validate non-transferrable asset with oracle with recipient seed', 
     asset: asset.publicKey,
   });
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await customPdaAllSeedsInit(umi, {
     account,
     signer: umi.identity,
@@ -503,7 +503,7 @@ test('it can validate non-transferrable asset with oracle with recipient seed', 
       recipient: newOwner.publicKey,
       asset: asset.publicKey,
       address: seedPubkey,
-      bytes: Buffer.from('example-seed-bytes', 'utf8'),
+      bytes: Buffer.from('exatple-seed-bytes', 'utf8'),
       oracleData: {
         __kind: 'V1',
         create: ExternalValidationResult.Pass,
@@ -537,12 +537,12 @@ test('it can validate and skip transferrable asset with oracle with recipient se
         {
           type: 'Oracle',
           resultsOffset: {
-            type: 'Anchor',
+            type: 'Trezoa',
           },
           lifecycleChecks: {
             transfer: [CheckResult.CAN_REJECT],
           },
-          baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+          baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
           baseAddressConfig: {
             type: 'CustomPda',
             seeds: [
@@ -572,7 +572,7 @@ test('it can validate non-burnable asset with oracle', async (t) => {
   const owner = generateSigner(umi);
   const oracle = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account: oracle,
     signer: umi.identity,
@@ -595,7 +595,7 @@ test('it can validate non-burnable asset with oracle', async (t) => {
         type: 'Oracle',
         baseAddress: oracle.publicKey,
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           burn: [CheckResult.CAN_REJECT],
@@ -618,7 +618,7 @@ test('it can validate burnable asset with oracle', async (t) => {
   const owner = generateSigner(umi);
   const oracle = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account: oracle,
     signer: umi.identity,
@@ -641,7 +641,7 @@ test('it can validate burnable asset with oracle', async (t) => {
         type: 'Oracle',
         baseAddress: oracle.publicKey,
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -664,7 +664,7 @@ test('it can validate non-updatable asset with oracle', async (t) => {
   const owner = generateSigner(umi);
   const oracle = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account: oracle,
     signer: umi.identity,
@@ -687,7 +687,7 @@ test('it can validate non-updatable asset with oracle', async (t) => {
         type: 'Oracle',
         baseAddress: oracle.publicKey,
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           update: [CheckResult.CAN_REJECT],
@@ -710,7 +710,7 @@ test('it can validate updatable asset with oracle', async (t) => {
   const owner = generateSigner(umi);
   const oracle = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account: oracle,
     signer: umi.identity,
@@ -733,7 +733,7 @@ test('it can validate updatable asset with oracle', async (t) => {
         type: 'Oracle',
         baseAddress: oracle.publicKey,
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],

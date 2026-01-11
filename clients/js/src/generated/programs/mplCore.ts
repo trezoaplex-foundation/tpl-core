@@ -11,16 +11,16 @@ import {
   Context,
   Program,
   PublicKey,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import { getMplCoreErrorFromCode, getMplCoreErrorFromName } from '../errors';
 
-export const MPL_CORE_PROGRAM_ID =
+export const TPL_CORE_PROGRAM_ID =
   'CoREENxT6tW1HoK8ypY1SxRMZTcVPm7R94rH4PZNhX7d' as PublicKey<'CoREENxT6tW1HoK8ypY1SxRMZTcVPm7R94rH4PZNhX7d'>;
 
 export function createMplCoreProgram(): Program {
   return {
-    name: 'mplCore',
-    publicKey: MPL_CORE_PROGRAM_ID,
+    name: 'tplCore',
+    publicKey: TPL_CORE_PROGRAM_ID,
     getErrorFromCode(code: number, cause?: Error) {
       return getMplCoreErrorFromCode(code, this, cause);
     },
@@ -37,7 +37,7 @@ export function getMplCoreProgram<T extends Program = Program>(
   context: Pick<Context, 'programs'>,
   clusterFilter?: ClusterFilter
 ): T {
-  return context.programs.get<T>('mplCore', clusterFilter);
+  return context.programs.get<T>('tplCore', clusterFilter);
 }
 
 export function getMplCoreProgramId(
@@ -45,8 +45,8 @@ export function getMplCoreProgramId(
   clusterFilter?: ClusterFilter
 ): PublicKey {
   return context.programs.getPublicKey(
-    'mplCore',
-    MPL_CORE_PROGRAM_ID,
+    'tplCore',
+    TPL_CORE_PROGRAM_ID,
     clusterFilter
   );
 }

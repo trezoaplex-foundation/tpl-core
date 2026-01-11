@@ -2,7 +2,7 @@ import { BaseValidationResultsOffset } from '../generated';
 
 export type ValidationResultsOffset =
   | { type: 'NoOffset' }
-  | { type: 'Anchor' }
+  | { type: 'Trezoa' }
   | { type: 'Custom'; offset: bigint };
 
 export function validationResultsOffsetToBase(

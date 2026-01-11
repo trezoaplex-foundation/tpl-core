@@ -6,7 +6,7 @@
  * @see https://github.com/metaplex-foundation/kinobi
  */
 
-import { Serializer, struct, u32 } from '@metaplex-foundation/umi/serializers';
+import { Serializer, struct, u32 } from '@trezoaplex-foundation/umi/serializers';
 
 export type Edition = { number: number };
 

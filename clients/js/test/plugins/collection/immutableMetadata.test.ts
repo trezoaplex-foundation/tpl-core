@@ -1,5 +1,5 @@
 import test from 'ava';
-import { generateSigner } from '@metaplex-foundation/umi';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 
 import {
   DEFAULT_COLLECTION,
@@ -51,7 +51,7 @@ test('it can prevent collection assets metadata from being updated', async (t) =
     collection,
     asset,
     name: 'Test Bread 3',
-    uri: 'https://example.com/bread3',
+    uri: 'https://exatple.com/bread3',
   }).sendAndConfirm(umi);
 
   await t.throwsAsync(result, {
@@ -132,7 +132,7 @@ test('it prevents both collection and asset from their meta updating when Immuta
     collection,
     asset,
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
   }).sendAndConfirm(umi);
 
   await t.throwsAsync(result, {

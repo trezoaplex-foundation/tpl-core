@@ -1,4 +1,4 @@
-import { PublicKey } from '@metaplex-foundation/umi';
+import { PublicKey } from '@trezoaplex-foundation/umi';
 import { BaseExternalPluginAdapterKey } from '../generated';
 import { PluginAuthority, pluginAuthorityToBase } from './pluginAuthority';
 import { LinkedDataKey, linkedDataKeyToBase } from './linkedDataKey';

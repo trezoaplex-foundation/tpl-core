@@ -1,11 +1,11 @@
 import test from 'ava';
 
 import {
-  mplCoreOracleExample,
+  tplCoreOracleExatple,
   fixedAccountInit,
   fixedAccountSet,
   preconfiguredAssetPdaInit,
-  MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+  TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
   preconfiguredAssetPdaSet,
   preconfiguredProgramPdaInit,
   preconfiguredProgramPdaSet,
@@ -20,14 +20,14 @@ import {
   preconfiguredAssetPdaCustomOffsetInit,
   preconfiguredAssetPdaCustomOffsetSet,
   close,
-} from '@metaplex-foundation/mpl-core-oracle-example';
+} from '@trezoaplex-foundation/tpl-core-oracle-exatple';
 import {
   generateSigner,
-  sol,
+  trz,
   assertAccountExists,
-} from '@metaplex-foundation/umi';
-import { generateSignerWithSol } from '@metaplex-foundation/umi-bundle-tests';
-import { createAccount } from '@metaplex-foundation/mpl-toolbox';
+} from '@trezoaplex-foundation/umi';
+import { generateSignerWithSol } from '@trezoaplex-foundation/umi-bundle-tests';
+import { createAccount } from '@trezoaplex-foundation/tpl-toolbox';
 import {
   assertAsset,
   assertBurned,
@@ -56,13 +56,13 @@ import {
 } from '../../src';
 
 const createUmi = async () =>
-  (await baseCreateUmi()).use(mplCoreOracleExample());
+  (await baseCreateUmi()).use(tplCoreOracleExatple());
 
 test('it can add oracle to asset for multiple lifecycle events', async (t) => {
   const umi = await createUmi();
   const account = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account,
     signer: umi.identity,
@@ -84,7 +84,7 @@ test('it can add oracle to asset for multiple lifecycle events', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           create: [CheckResult.CAN_REJECT],
@@ -103,7 +103,7 @@ test('it can add oracle to asset for multiple lifecycle events', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -125,7 +125,7 @@ test('it can add multiple oracles and internal plugins to asset', async (t) => {
   const account2 = generateSigner(umi);
   const delegateAddress = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account,
     signer: umi.identity,
@@ -141,7 +141,7 @@ test('it can add multiple oracles and internal plugins to asset', async (t) => {
     },
   }).sendAndConfirm(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account: account2,
     signer: umi.identity,
@@ -166,7 +166,7 @@ test('it can add multiple oracles and internal plugins to asset', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           create: [CheckResult.CAN_REJECT],
@@ -192,7 +192,7 @@ test('it can add multiple oracles and internal plugins to asset', async (t) => {
     plugin: {
       type: 'Oracle',
       resultsOffset: {
-        type: 'Anchor',
+        type: 'Trezoa',
       },
       lifecycleChecks: {
         update: [CheckResult.CAN_REJECT],
@@ -242,7 +242,7 @@ test('it can add multiple oracles and internal plugins to asset', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -257,7 +257,7 @@ test('it can add multiple oracles and internal plugins to asset', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -320,7 +320,7 @@ test('it can use fixed address oracle to deny update', async (t) => {
   const umi = await createUmi();
   const account = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account,
     signer: umi.identity,
@@ -342,7 +342,7 @@ test('it can use fixed address oracle to deny update', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           update: [CheckResult.CAN_REJECT],
@@ -387,7 +387,7 @@ test('it can use fixed address oracle to deny update', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -406,7 +406,7 @@ test('it can use fixed address oracle to deny update via collection', async (t) 
   const umi = await createUmi();
   const account = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account,
     signer: umi.identity,
@@ -431,7 +431,7 @@ test('it can use fixed address oracle to deny update via collection', async (t) 
         {
           type: 'Oracle',
           resultsOffset: {
-            type: 'Anchor',
+            type: 'Trezoa',
           },
           lifecycleChecks: {
             update: [CheckResult.CAN_REJECT],
@@ -484,7 +484,7 @@ test('it can use fixed address oracle to deny update via collection', async (t) 
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -503,7 +503,7 @@ test('it can use fixed address oracle to deny transfer', async (t) => {
   const umi = await createUmi();
   const account = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account,
     signer: umi.identity,
@@ -525,7 +525,7 @@ test('it can use fixed address oracle to deny transfer', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -571,7 +571,7 @@ test('it can use fixed address oracle to deny transfer', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -598,7 +598,7 @@ test('it cannot create asset with oracle that has no lifecycle checks', async (t
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {},
         baseAddress: account.publicKey,
@@ -629,7 +629,7 @@ test('it can add oracle that can reject to asset', async (t) => {
     plugin: {
       type: 'Oracle',
       resultsOffset: {
-        type: 'Anchor',
+        type: 'Trezoa',
       },
       lifecycleChecks: {
         transfer: [CheckResult.CAN_REJECT],
@@ -646,7 +646,7 @@ test('it can add oracle that can reject to asset', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -682,7 +682,7 @@ test('it cannot add oracle with no lifecycle checks to asset', async (t) => {
     plugin: {
       type: 'Oracle',
       resultsOffset: {
-        type: 'Anchor',
+        type: 'Trezoa',
       },
       lifecycleChecks: {},
       baseAddress: account.publicKey,
@@ -710,7 +710,7 @@ test('it cannot update oracle to have no lifecycle checks', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -728,7 +728,7 @@ test('it cannot update oracle to have no lifecycle checks', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -753,7 +753,7 @@ test('it cannot update oracle to have no lifecycle checks', async (t) => {
       },
       type: 'Oracle',
       resultsOffset: {
-        type: 'Anchor',
+        type: 'Trezoa',
       },
       lifecycleChecks: {},
     },
@@ -769,7 +769,7 @@ test('it cannot update oracle to have no lifecycle checks', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -796,7 +796,7 @@ test('it cannot create asset with oracle that can approve', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_APPROVE],
@@ -821,7 +821,7 @@ test('it cannot create asset with oracle that can approve in addition to reject'
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_APPROVE, CheckResult.CAN_REJECT],
@@ -856,7 +856,7 @@ test('it cannot add oracle to asset that can approve', async (t) => {
     plugin: {
       type: 'Oracle',
       resultsOffset: {
-        type: 'Anchor',
+        type: 'Trezoa',
       },
       lifecycleChecks: {
         transfer: [CheckResult.CAN_APPROVE],
@@ -897,7 +897,7 @@ test('it cannot add oracle to asset that can approve in addition to reject', asy
     plugin: {
       type: 'Oracle',
       resultsOffset: {
-        type: 'Anchor',
+        type: 'Trezoa',
       },
       lifecycleChecks: {
         transfer: [CheckResult.CAN_APPROVE, CheckResult.CAN_REJECT],
@@ -927,7 +927,7 @@ test('it cannot update oracle to approve', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -945,7 +945,7 @@ test('it cannot update oracle to approve', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -969,7 +969,7 @@ test('it cannot update oracle to approve', async (t) => {
       },
       type: 'Oracle',
       resultsOffset: {
-        type: 'Anchor',
+        type: 'Trezoa',
       },
       lifecycleChecks: {
         transfer: [CheckResult.CAN_APPROVE],
@@ -987,7 +987,7 @@ test('it cannot update oracle to approve', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -1013,7 +1013,7 @@ test('it cannot update oracle to approve in addition to reject', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -1031,7 +1031,7 @@ test('it cannot update oracle to approve in addition to reject', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -1055,7 +1055,7 @@ test('it cannot update oracle to approve in addition to reject', async (t) => {
       },
       type: 'Oracle',
       resultsOffset: {
-        type: 'Anchor',
+        type: 'Trezoa',
       },
       lifecycleChecks: {
         transfer: [CheckResult.CAN_APPROVE, CheckResult.CAN_REJECT],
@@ -1073,7 +1073,7 @@ test('it cannot update oracle to approve in addition to reject', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -1100,7 +1100,7 @@ test('it cannot create asset with oracle that can listen', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_LISTEN],
@@ -1135,7 +1135,7 @@ test('it cannot add oracle to asset that can listen', async (t) => {
     plugin: {
       type: 'Oracle',
       resultsOffset: {
-        type: 'Anchor',
+        type: 'Trezoa',
       },
       lifecycleChecks: {
         transfer: [CheckResult.CAN_LISTEN],
@@ -1165,7 +1165,7 @@ test('it cannot update oracle to listen', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -1183,7 +1183,7 @@ test('it cannot update oracle to listen', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -1207,7 +1207,7 @@ test('it cannot update oracle to listen', async (t) => {
       },
       type: 'Oracle',
       resultsOffset: {
-        type: 'Anchor',
+        type: 'Trezoa',
       },
       lifecycleChecks: {
         transfer: [CheckResult.CAN_LISTEN],
@@ -1225,7 +1225,7 @@ test('it cannot update oracle to listen', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -1245,7 +1245,7 @@ test('it cannot use fixed address oracle to deny transfer if not registered for 
   const account = generateSigner(umi);
   const owner = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account,
     signer: umi.identity,
@@ -1268,7 +1268,7 @@ test('it cannot use fixed address oracle to deny transfer if not registered for 
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           create: [CheckResult.CAN_REJECT],
@@ -1294,7 +1294,7 @@ test('it cannot use fixed address oracle to deny transfer if not registered for 
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -1313,7 +1313,7 @@ test('it can use fixed address oracle to deny create', async (t) => {
   const umi = await createUmi();
   const account = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account,
     signer: umi.identity,
@@ -1338,7 +1338,7 @@ test('it can use fixed address oracle to deny create', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           create: [CheckResult.CAN_REJECT],
@@ -1370,7 +1370,7 @@ test('it can use fixed address oracle to deny create', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           create: [CheckResult.CAN_REJECT],
@@ -1388,7 +1388,7 @@ test('it can use fixed address oracle to deny create', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -1407,7 +1407,7 @@ test('it can use fixed address oracle to deny burn', async (t) => {
   const umi = await createUmi();
   const account = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account,
     signer: umi.identity,
@@ -1429,7 +1429,7 @@ test('it can use fixed address oracle to deny burn', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           burn: [CheckResult.CAN_REJECT],
@@ -1472,12 +1472,12 @@ test('it can use preconfigured program pda oracle to deny update', async (t) => 
   const oraclePlugin: OracleInitInfoArgs = {
     type: 'Oracle',
     resultsOffset: {
-      type: 'Anchor',
+      type: 'Trezoa',
     },
     lifecycleChecks: {
       update: [CheckResult.CAN_REJECT],
     },
-    baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+    baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
     baseAddressConfig: {
       type: 'PreconfiguredProgram',
     },
@@ -1556,12 +1556,12 @@ test('it can use preconfigured program pda oracle to deny update', async (t) => 
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
         },
-        baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+        baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
         lifecycleChecks: {
           update: [CheckResult.CAN_REJECT],
         },
@@ -1579,12 +1579,12 @@ test('it can use preconfigured collection pda oracle to deny update', async (t) 
   const oraclePlugin: OracleInitInfoArgs = {
     type: 'Oracle',
     resultsOffset: {
-      type: 'Anchor',
+      type: 'Trezoa',
     },
     lifecycleChecks: {
       update: [CheckResult.CAN_REJECT],
     },
-    baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+    baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
     baseAddressConfig: {
       type: 'PreconfiguredCollection',
     },
@@ -1659,12 +1659,12 @@ test('it can use preconfigured collection pda oracle to deny update', async (t) 
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
         },
-        baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+        baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
         lifecycleChecks: {
           update: [CheckResult.CAN_REJECT],
         },
@@ -1682,12 +1682,12 @@ test('it can use preconfigured owner pda oracle to deny burn', async (t) => {
   const oraclePlugin: OracleInitInfoArgs = {
     type: 'Oracle',
     resultsOffset: {
-      type: 'Anchor',
+      type: 'Trezoa',
     },
     lifecycleChecks: {
       burn: [CheckResult.CAN_REJECT],
     },
-    baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+    baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
     baseAddressConfig: {
       type: 'PreconfiguredOwner',
     },
@@ -1735,12 +1735,12 @@ test('it can use preconfigured owner pda oracle to deny burn', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
         },
-        baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+        baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
         lifecycleChecks: {
           burn: [CheckResult.CAN_REJECT],
         },
@@ -1781,12 +1781,12 @@ test('it can use preconfigured recipient pda oracle to deny transfer', async (t)
   const oraclePlugin: OracleInitInfoArgs = {
     type: 'Oracle',
     resultsOffset: {
-      type: 'Anchor',
+      type: 'Trezoa',
     },
     lifecycleChecks: {
       transfer: [CheckResult.CAN_REJECT],
     },
-    baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+    baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
     baseAddressConfig: {
       type: 'PreconfiguredRecipient',
     },
@@ -1853,12 +1853,12 @@ test('it can use preconfigured recipient pda oracle to deny transfer', async (t)
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
         },
-        baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+        baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
         },
@@ -1876,12 +1876,12 @@ test('it can use preconfigured asset pda oracle to deny update', async (t) => {
   const oraclePlugin: OracleInitInfoArgs = {
     type: 'Oracle',
     resultsOffset: {
-      type: 'Anchor',
+      type: 'Trezoa',
     },
     lifecycleChecks: {
       update: [CheckResult.CAN_REJECT],
     },
-    baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+    baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
     baseAddressConfig: {
       type: 'PreconfiguredAsset',
     },
@@ -1949,12 +1949,12 @@ test('it can use preconfigured asset pda oracle to deny update', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
         },
-        baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+        baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
         lifecycleChecks: {
           update: [CheckResult.CAN_REJECT],
         },
@@ -1975,12 +1975,12 @@ test('it can use custom pda (all seeds) oracle to deny transfer', async (t) => {
   const oraclePlugin: OracleInitInfoArgs = {
     type: 'Oracle',
     resultsOffset: {
-      type: 'Anchor',
+      type: 'Trezoa',
     },
     lifecycleChecks: {
       transfer: [CheckResult.CAN_REJECT],
     },
-    baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+    baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
     baseAddressConfig: {
       type: 'CustomPda',
       seeds: [
@@ -1991,7 +1991,7 @@ test('it can use custom pda (all seeds) oracle to deny transfer', async (t) => {
         { type: 'Address', pubkey: seedPubkey },
         {
           type: 'Bytes',
-          bytes: Buffer.from('example-seed-bytes', 'utf8'),
+          bytes: Buffer.from('exatple-seed-bytes', 'utf8'),
         },
       ],
     },
@@ -2025,7 +2025,7 @@ test('it can use custom pda (all seeds) oracle to deny transfer', async (t) => {
       recipient: newOwner.publicKey,
       asset: asset.publicKey,
       address: seedPubkey,
-      bytes: Buffer.from('example-seed-bytes', 'utf8'),
+      bytes: Buffer.from('exatple-seed-bytes', 'utf8'),
       oracleData: {
         __kind: 'V1',
         create: ExternalValidationResult.Pass,
@@ -2054,7 +2054,7 @@ test('it can use custom pda (all seeds) oracle to deny transfer', async (t) => {
       recipient: newOwner.publicKey,
       asset: asset.publicKey,
       address: seedPubkey,
-      bytes: Buffer.from('example-seed-bytes', 'utf8'),
+      bytes: Buffer.from('exatple-seed-bytes', 'utf8'),
       oracleData: {
         __kind: 'V1',
         create: ExternalValidationResult.Pass,
@@ -2080,12 +2080,12 @@ test('it can use custom pda (all seeds) oracle to deny transfer', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
         },
-        baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+        baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
         },
@@ -2099,7 +2099,7 @@ test('it can use custom pda (all seeds) oracle to deny transfer', async (t) => {
             { type: 'Address', pubkey: seedPubkey },
             {
               type: 'Bytes',
-              bytes: new Uint8Array(Buffer.from('example-seed-bytes', 'utf8')),
+              bytes: new Uint8Array(Buffer.from('exatple-seed-bytes', 'utf8')),
             },
           ],
         },
@@ -2116,12 +2116,12 @@ test('it can use custom pda (typical) oracle to deny transfer', async (t) => {
   const oraclePlugin: OracleInitInfoArgs = {
     type: 'Oracle',
     resultsOffset: {
-      type: 'Anchor',
+      type: 'Trezoa',
     },
     lifecycleChecks: {
       transfer: [CheckResult.CAN_REJECT],
     },
-    baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+    baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
     baseAddressConfig: {
       type: 'CustomPda',
       seeds: [
@@ -2212,12 +2212,12 @@ test('it can use custom pda (typical) oracle to deny transfer', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
         },
-        baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+        baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
         },
@@ -2248,13 +2248,13 @@ test('it can use custom pda (with custom program ID) oracle to deny transfer', a
   const newOwner = generateSigner(umi);
 
   // Configure an Oracle plugin to have a custom program ID.  In order to reuse the oracle
-  // example program we will set the base address to a random Pubkey, and set the custom program
-  // ID to the oracle example program ID.
+  // exatple program we will set the base address to a random Pubkey, and set the custom program
+  // ID to the oracle exatple program ID.
   const randomProgramId = generateSigner(umi).publicKey;
   const oraclePlugin: OracleInitInfoArgs = {
     type: 'Oracle',
     resultsOffset: {
-      type: 'Anchor',
+      type: 'Trezoa',
     },
     lifecycleChecks: {
       transfer: [CheckResult.CAN_REJECT],
@@ -2273,7 +2273,7 @@ test('it can use custom pda (with custom program ID) oracle to deny transfer', a
           bytes: Buffer.from('additional-bytes-seed-bytes', 'utf8'),
         },
       ],
-      customProgramId: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+      customProgramId: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
     },
   };
 
@@ -2351,7 +2351,7 @@ test('it can use custom pda (with custom program ID) oracle to deny transfer', a
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -2375,7 +2375,7 @@ test('it can use custom pda (with custom program ID) oracle to deny transfer', a
               ),
             },
           ],
-          customProgramId: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+          customProgramId: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
         },
       },
     ],
@@ -2392,11 +2392,11 @@ test('it can use preconfigured asset pda custom offset oracle to deny update', a
   //     pub validation: OracleValidation,
   // }
   //
-  // Thus the `resultsOffset` below is set to 48.  This is because the anchor discriminator, the
+  // Thus the `resultsOffset` below is set to 48.  This is because the trezoa discriminator, the
   // `authority` `Pubkey`, and the `sequence_num` all precede the `OracleValidation` struct
   // within the account:
   //
-  // 8 (anchor discriminator) + 32 (authority) + 8 (sequence number) = 48.
+  // 8 (trezoa discriminator) + 32 (authority) + 8 (sequence number) = 48.
   const oraclePlugin: OracleInitInfoArgs = {
     type: 'Oracle',
     resultsOffset: {
@@ -2406,7 +2406,7 @@ test('it can use preconfigured asset pda custom offset oracle to deny update', a
     lifecycleChecks: {
       update: [CheckResult.CAN_REJECT],
     },
-    baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+    baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
     baseAddressConfig: {
       type: 'PreconfiguredAsset',
     },
@@ -2446,7 +2446,7 @@ test('it can use preconfigured asset pda custom offset oracle to deny update', a
   await t.throwsAsync(updateResult, { name: 'InvalidAuthority' });
 
   // Making sure the incorrect authority cannot update the oracle.  This is more just a test of the
-  // example program functionality.
+  // exatple program functionality.
   const setResult = preconfiguredAssetPdaCustomOffsetSet(umi, {
     account,
     authority: umi.identity,
@@ -2464,7 +2464,7 @@ test('it can use preconfigured asset pda custom offset oracle to deny update', a
   await t.throwsAsync(setResult, { name: 'ProgramErrorNotRecognizedError' });
 
   // Making sure a lower sequence number passes but does not update the oracle.  This is also just
-  // a test of the example program functionality.
+  // a test of the exatple program functionality.
   await preconfiguredAssetPdaCustomOffsetSet(umi, {
     account,
     authority: dataAuthority,
@@ -2479,7 +2479,7 @@ test('it can use preconfigured asset pda custom offset oracle to deny update', a
     },
   }).sendAndConfirm(umi);
 
-  // Validate still cannot update the mpl-core asset because the oracle did not change.
+  // Validate still cannot update the tpl-core asset because the oracle did not change.
   const updateResult2 = update(umi, {
     asset,
     name: 'new name',
@@ -2522,7 +2522,7 @@ test('it can use preconfigured asset pda custom offset oracle to deny update', a
         authority: {
           type: 'UpdateAuthority',
         },
-        baseAddress: MPL_CORE_ORACLE_EXAMPLE_PROGRAM_ID,
+        baseAddress: TPL_CORE_ORACLE_EXATPLE_PROGRAM_ID,
         lifecycleChecks: {
           update: [CheckResult.CAN_REJECT],
         },
@@ -2539,7 +2539,7 @@ test('it can use one fixed address oracle to deny transfer when a second oracle 
   const account1 = generateSigner(umi);
   const account2 = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account: account1,
     signer: umi.identity,
@@ -2555,7 +2555,7 @@ test('it can use one fixed address oracle to deny transfer when a second oracle 
     },
   }).sendAndConfirm(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account: account2,
     signer: umi.identity,
@@ -2577,7 +2577,7 @@ test('it can use one fixed address oracle to deny transfer when a second oracle 
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -2587,7 +2587,7 @@ test('it can use one fixed address oracle to deny transfer when a second oracle 
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -2633,7 +2633,7 @@ test('it can use one fixed address oracle to deny transfer when a second oracle 
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -2646,7 +2646,7 @@ test('it can use one fixed address oracle to deny transfer when a second oracle 
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -2681,12 +2681,12 @@ test('it can update asset to different size name with oracle', async (t) => {
   await create(umi, {
     asset,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           update: [CheckResult.CAN_REJECT],
@@ -2718,7 +2718,7 @@ test('it can update asset to different size name with oracle', async (t) => {
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'name 2',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -2729,7 +2729,7 @@ test('it can update asset to different size name with oracle', async (t) => {
         },
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           update: [CheckResult.CAN_REJECT],
@@ -2762,12 +2762,12 @@ test('it can update oracle to smaller registry record', async (t) => {
   await create(umi, {
     asset,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -2779,7 +2779,7 @@ test('it can update oracle to smaller registry record', async (t) => {
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -2790,7 +2790,7 @@ test('it can update oracle to smaller registry record', async (t) => {
         },
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -2816,7 +2816,7 @@ test('it can update oracle to smaller registry record', async (t) => {
       },
       type: 'Oracle',
       resultsOffset: {
-        type: 'Anchor',
+        type: 'Trezoa',
       },
       lifecycleChecks: {
         transfer: [CheckResult.CAN_REJECT],
@@ -2825,7 +2825,7 @@ test('it can update oracle to smaller registry record', async (t) => {
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -2836,7 +2836,7 @@ test('it can update oracle to smaller registry record', async (t) => {
         },
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           create: undefined,
@@ -2879,12 +2879,12 @@ test('it can update oracle to larger registry record', async (t) => {
   await create(umi, {
     asset,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -2895,7 +2895,7 @@ test('it can update oracle to larger registry record', async (t) => {
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -2906,7 +2906,7 @@ test('it can update oracle to larger registry record', async (t) => {
         },
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -2931,7 +2931,7 @@ test('it can update oracle to larger registry record', async (t) => {
       },
       type: 'Oracle',
       resultsOffset: {
-        type: 'Anchor',
+        type: 'Trezoa',
       },
       lifecycleChecks: {
         create: [CheckResult.CAN_REJECT],
@@ -2943,7 +2943,7 @@ test('it can update oracle to larger registry record', async (t) => {
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -2954,7 +2954,7 @@ test('it can update oracle to larger registry record', async (t) => {
         },
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           create: [CheckResult.CAN_REJECT],
@@ -2984,12 +2984,12 @@ test('it create fails but does not panic when oracle account does not exist', as
   const result = create(umi, {
     asset,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           create: [CheckResult.CAN_REJECT],
@@ -3014,7 +3014,7 @@ test('it transfer fails but does not panic when oracle account does not exist', 
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -3032,7 +3032,7 @@ test('it transfer fails but does not panic when oracle account does not exist', 
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         authority: {
           type: 'UpdateAuthority',
@@ -3062,9 +3062,9 @@ test('it transfer fails but does not panic when oracle account is too small', as
   // Create an invalid oracle account that is an account with 3 bytes.
   await createAccount(umi, {
     newAccount,
-    lamports: sol(0.1),
+    lamports: trz(0.1),
     space: 3,
-    programId: umi.programs.get('mplCore').publicKey,
+    programId: umi.programs.get('tplCore').publicKey,
   }).sendAndConfirm(umi);
 
   const asset = await createAsset(umi, {
@@ -3120,9 +3120,9 @@ test('it empty account does not default to valid oracle', async (t) => {
   // Create an invalid oracle account that is an account with 42 bytes.
   await createAccount(umi, {
     newAccount,
-    lamports: sol(0.1),
+    lamports: trz(0.1),
     space: 42,
-    programId: umi.programs.get('mplCore').publicKey,
+    programId: umi.programs.get('tplCore').publicKey,
   }).sendAndConfirm(umi);
 
   const asset = await createAsset(umi, {
@@ -3193,12 +3193,12 @@ test('it can update oracle with external plugin authority different than asset u
   await create(umi, {
     asset,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -3213,7 +3213,7 @@ test('it can update oracle with external plugin authority different than asset u
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -3226,7 +3226,7 @@ test('it can update oracle with external plugin authority different than asset u
         },
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -3257,7 +3257,7 @@ test('it can update oracle with external plugin authority different than asset u
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -3305,12 +3305,12 @@ test('it cannot update oracle using update authority when different from externa
   await create(umi, {
     asset,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -3325,7 +3325,7 @@ test('it cannot update oracle using update authority when different from externa
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -3338,7 +3338,7 @@ test('it cannot update oracle using update authority when different from externa
         },
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -3371,7 +3371,7 @@ test('it cannot update oracle using update authority when different from externa
   await t.throwsAsync(result, { name: 'InvalidAuthority' });
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -3384,7 +3384,7 @@ test('it cannot update oracle using update authority when different from externa
         },
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -3418,12 +3418,12 @@ test('it can update oracle on collection with external plugin authority differen
   await createCollection(umi, {
     collection,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -3438,7 +3438,7 @@ test('it can update oracle on collection with external plugin authority differen
   }).sendAndConfirm(umi);
 
   await assertCollection(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     collection: collection.publicKey,
     updateAuthority: umi.identity.publicKey,
@@ -3450,7 +3450,7 @@ test('it can update oracle on collection with external plugin authority differen
         },
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -3481,7 +3481,7 @@ test('it can update oracle on collection with external plugin authority differen
   }).sendAndConfirm(umi);
 
   await assertCollection(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     collection: collection.publicKey,
     updateAuthority: umi.identity.publicKey,
@@ -3528,12 +3528,12 @@ test('it cannot update oracle on collection using update authority when differen
   await createCollection(umi, {
     collection,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -3548,7 +3548,7 @@ test('it cannot update oracle on collection using update authority when differen
   }).sendAndConfirm(umi);
 
   await assertCollection(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     collection: collection.publicKey,
     updateAuthority: umi.identity.publicKey,
@@ -3560,7 +3560,7 @@ test('it cannot update oracle on collection using update authority when differen
         },
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -3593,7 +3593,7 @@ test('it cannot update oracle on collection using update authority when differen
   await t.throwsAsync(result, { name: 'InvalidAuthority' });
 
   await assertCollection(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     collection: collection.publicKey,
     updateAuthority: umi.identity.publicKey,
@@ -3605,7 +3605,7 @@ test('it cannot update oracle on collection using update authority when differen
         },
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           transfer: [CheckResult.CAN_REJECT],
@@ -3638,12 +3638,12 @@ test('it can create an oracle on a collection with create set to reject', async 
   await createCollection(umi, {
     collection,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           create: [CheckResult.CAN_REJECT],
@@ -3654,7 +3654,7 @@ test('it can create an oracle on a collection with create set to reject', async 
   }).sendAndConfirm(umi);
 
   await assertCollection(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     collection: collection.publicKey,
     updateAuthority: umi.identity.publicKey,
@@ -3665,7 +3665,7 @@ test('it can create an oracle on a collection with create set to reject', async 
         },
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           create: [CheckResult.CAN_REJECT],
@@ -3681,7 +3681,7 @@ test('it can use fixed address oracle on a collection to deny create', async (t)
   const umi = await createUmi();
   const account = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account,
     signer: umi.identity,
@@ -3701,12 +3701,12 @@ test('it can use fixed address oracle on a collection to deny create', async (t)
   await createCollection(umi, {
     collection: collectionSigner,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           create: [CheckResult.CAN_REJECT],
@@ -3717,7 +3717,7 @@ test('it can use fixed address oracle on a collection to deny create', async (t)
   }).sendAndConfirm(umi);
 
   await assertCollection(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     collection: collectionSigner.publicKey,
     updateAuthority: umi.identity.publicKey,
@@ -3728,7 +3728,7 @@ test('it can use fixed address oracle on a collection to deny create', async (t)
         },
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           create: [CheckResult.CAN_REJECT],

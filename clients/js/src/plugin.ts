@@ -1,7 +1,7 @@
-import { UmiPlugin } from '@metaplex-foundation/umi';
+import { UmiPlugin } from '@trezoaplex-foundation/umi';
 import { createMplCoreProgram } from './generated';
 
-export const mplCore = (): UmiPlugin => ({
+export const tplCore = (): UmiPlugin => ({
   install(umi) {
     umi.programs.add(createMplCoreProgram(), false);
   },

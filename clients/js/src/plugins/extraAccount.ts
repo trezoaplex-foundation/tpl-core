@@ -1,13 +1,13 @@
-import { AccountMeta, Context, PublicKey } from '@metaplex-foundation/umi';
+import { AccountMeta, Context, PublicKey } from '@trezoaplex-foundation/umi';
 import {
   string,
   publicKey as publicKeySerializer,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 import { BaseExtraAccount } from '../generated';
 import { Seed, seedFromBase, seedToBase } from './seed';
 import { RenameToType, someOrNone, unwrapOption } from '../utils';
 
-export const PRECONFIGURED_SEED = 'mpl-core';
+export const PRECONFIGURED_SEED = 'tpl-core';
 
 export const findPreconfiguredPda = (
   context: Pick<Context, 'eddsa'>,

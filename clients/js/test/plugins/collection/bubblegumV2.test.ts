@@ -1,5 +1,5 @@
 import test from 'ava';
-import { generateSigner, PublicKey } from '@metaplex-foundation/umi';
+import { generateSigner, PublicKey } from '@trezoaplex-foundation/umi';
 import {
   addCollectionPluginV1,
   createPlugin,
@@ -15,7 +15,7 @@ import {
 } from '../../_setupRaw';
 import { createCollection } from '../../_setupSdk';
 
-const MPL_BUBBLEGUM_PROGRAM_ID =
+const TPL_BUBBLEGUM_PROGRAM_ID =
   'BGUMAp9Gq7iTEuizy4pqaxsTyUCBK68MDfK752saRPUY' as PublicKey<'BGUMAp9Gq7iTEuizy4pqaxsTyUCBK68MDfK752saRPUY'>;
 
 test('it can create collection with BubblegumV2 plugin', async (t) => {
@@ -37,7 +37,7 @@ test('it can create collection with BubblegumV2 plugin', async (t) => {
     bubblegumV2: {
       authority: {
         type: 'Address',
-        address: MPL_BUBBLEGUM_PROGRAM_ID,
+        address: TPL_BUBBLEGUM_PROGRAM_ID,
       },
     },
   });
@@ -85,7 +85,7 @@ test('Update Authority cannot remove BubblegumV2 from collection', async (t) => 
     bubblegumV2: {
       authority: {
         type: 'Address',
-        address: MPL_BUBBLEGUM_PROGRAM_ID,
+        address: TPL_BUBBLEGUM_PROGRAM_ID,
       },
     },
   });
@@ -108,7 +108,7 @@ test('Update Authority cannot remove BubblegumV2 from collection', async (t) => 
     bubblegumV2: {
       authority: {
         type: 'Address',
-        address: MPL_BUBBLEGUM_PROGRAM_ID,
+        address: TPL_BUBBLEGUM_PROGRAM_ID,
       },
     },
   });
@@ -141,7 +141,7 @@ test('it can create collection with BubblegumV2 plugin and other allow-listed pl
     bubblegumV2: {
       authority: {
         type: 'Address',
-        address: MPL_BUBBLEGUM_PROGRAM_ID,
+        address: TPL_BUBBLEGUM_PROGRAM_ID,
       },
     },
     updateDelegate: {
@@ -207,7 +207,7 @@ test('it can add allow-listed plugins to collection with BubblegumV2 plugin', as
     bubblegumV2: {
       authority: {
         type: 'Address',
-        address: MPL_BUBBLEGUM_PROGRAM_ID,
+        address: TPL_BUBBLEGUM_PROGRAM_ID,
       },
     },
   });
@@ -250,7 +250,7 @@ test('it cannot add non-allow-listed plugins to collection with BubblegumV2 plug
     bubblegumV2: {
       authority: {
         type: 'Address',
-        address: MPL_BUBBLEGUM_PROGRAM_ID,
+        address: TPL_BUBBLEGUM_PROGRAM_ID,
       },
     },
   });
@@ -306,7 +306,7 @@ test('it cannot add external plugin to collection with BubblegumV2 plugin', asyn
     bubblegumV2: {
       authority: {
         type: 'Address',
-        address: MPL_BUBBLEGUM_PROGRAM_ID,
+        address: TPL_BUBBLEGUM_PROGRAM_ID,
       },
     },
   });

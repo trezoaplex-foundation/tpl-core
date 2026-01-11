@@ -1,7 +1,7 @@
-import { generateSigner } from '@metaplex-foundation/umi';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 import test from 'ava';
-import { generateSignerWithSol } from '@metaplex-foundation/umi-bundle-tests';
-import { SPL_SYSTEM_PROGRAM_ID } from '@metaplex-foundation/mpl-toolbox';
+import { generateSignerWithSol } from '@trezoaplex-foundation/umi-bundle-tests';
+import { SPL_SYSTEM_PROGRAM_ID } from '@trezoaplex-foundation/tpl-toolbox';
 import {
   addCollectionPlugin,
   addPlugin,
@@ -315,7 +315,7 @@ test('an updateDelegate on collection can update an asset', async (t) => {
     asset,
     collection,
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
     authority: updateDelegate,
   }).sendAndConfirm(umi);
 
@@ -325,7 +325,7 @@ test('an updateDelegate on collection can update an asset', async (t) => {
     owner: owner.publicKey,
     updateAuthority: { type: 'Collection', address: collection.publicKey },
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
   });
 });
 
@@ -378,7 +378,7 @@ test('an updateDelegate additionalDelegate on collection can update an asset', a
     asset,
     collection,
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
     authority: updateDelegate,
   }).sendAndConfirm(umi);
 
@@ -388,7 +388,7 @@ test('an updateDelegate additionalDelegate on collection can update an asset', a
     owner: owner.publicKey,
     updateAuthority: { type: 'Collection', address: collection.publicKey },
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
   });
 });
 
@@ -457,7 +457,7 @@ test('an updateDelegate on collection cannot update an asset after delegate auth
     asset,
     collection,
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
     authority: updateDelegate,
   }).sendAndConfirm(umi);
 
@@ -532,7 +532,7 @@ test('an updateDelegate additionalDelegate on collection cannot update an asset 
     asset,
     collection,
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
     authority: updateDelegate,
   }).sendAndConfirm(umi);
 
@@ -944,7 +944,7 @@ test('it can add asset to collection as collection update delegate', async (t) =
   await createV2(umi, {
     asset: assetSigner,
     name: 'My Asset',
-    uri: 'https://example.com/my-asset.json',
+    uri: 'https://exatple.com/my-asset.json',
   }).sendAndConfirm(umi);
 
   const collectionSigner = generateSigner(collectionUmi);
@@ -952,7 +952,7 @@ test('it can add asset to collection as collection update delegate', async (t) =
   await createCollection(collectionUmi, {
     collection: collectionSigner,
     name: 'My Collection',
-    uri: 'https://example.com/my-collection.json',
+    uri: 'https://exatple.com/my-collection.json',
   });
 
   await addCollectionPlugin(collectionUmi, {
@@ -991,7 +991,7 @@ test('it can add asset to collection as collection additional delegate', async (
   await createV2(umi, {
     asset: assetSigner,
     name: 'My Asset',
-    uri: 'https://example.com/my-asset.json',
+    uri: 'https://exatple.com/my-asset.json',
   }).sendAndConfirm(umi);
 
   const collectionSigner = generateSigner(collectionUmi);
@@ -999,7 +999,7 @@ test('it can add asset to collection as collection additional delegate', async (
   await createCollection(collectionUmi, {
     collection: collectionSigner,
     name: 'My Collection',
-    uri: 'https://example.com/my-collection.json',
+    uri: 'https://exatple.com/my-collection.json',
   });
 
   await addCollectionPlugin(collectionUmi, {
@@ -1040,7 +1040,7 @@ test('it can add asset to collection with collection owner as update delegate', 
   await createV2(umi, {
     asset: assetSigner,
     name: 'My Asset',
-    uri: 'https://example.com/my-asset.json',
+    uri: 'https://exatple.com/my-asset.json',
   }).sendAndConfirm(umi);
 
   const collectionSigner = generateSigner(collectionUmi);
@@ -1048,7 +1048,7 @@ test('it can add asset to collection with collection owner as update delegate', 
   await createCollection(collectionUmi, {
     collection: collectionSigner,
     name: 'My Collection',
-    uri: 'https://example.com/my-collection.json',
+    uri: 'https://exatple.com/my-collection.json',
   });
 
   await addPlugin(umi, {

@@ -13,7 +13,7 @@ import {
   dataEnum,
   struct,
   tuple,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 import {
   BaseAppData,
   BaseAppDataArgs,

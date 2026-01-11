@@ -1,7 +1,7 @@
-import { generateSigner, sol } from '@metaplex-foundation/umi';
+import { generateSigner, sol } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 
-import { generateSignerWithSol } from '@metaplex-foundation/umi-bundle-tests';
+import { generateSignerWithSol } from '@trezoaplex-foundation/umi-bundle-tests';
 import { burnV1, pluginAuthorityPair } from '../src';
 import {
   DEFAULT_ASSET,

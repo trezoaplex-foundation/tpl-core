@@ -1,6 +1,6 @@
-import { generateSigner } from '@metaplex-foundation/umi';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 import test from 'ava';
-import { SPL_SYSTEM_PROGRAM_ID } from '@metaplex-foundation/mpl-toolbox';
+import { SPL_SYSTEM_PROGRAM_ID } from '@trezoaplex-foundation/tpl-toolbox';
 import {
   addPlugin,
   approvePluginAuthority,
@@ -179,7 +179,7 @@ test('an updateDelegate can update an asset', async (t) => {
   await update(umi, {
     asset,
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
     authority: updateDelegate,
   }).sendAndConfirm(umi);
 
@@ -195,7 +195,7 @@ test('an updateDelegate can update an asset', async (t) => {
       additionalDelegates: [],
     },
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
   });
 });
 
@@ -232,7 +232,7 @@ test('an updateDelegate additionalDelegate can update an asset', async (t) => {
   await update(umi, {
     asset,
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
     authority: updateDelegate,
   }).sendAndConfirm(umi);
 
@@ -248,7 +248,7 @@ test('an updateDelegate additionalDelegate can update an asset', async (t) => {
       additionalDelegates: [updateDelegate.publicKey],
     },
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
   });
 });
 
@@ -311,7 +311,7 @@ test('an updateDelegate cannot update an asset after delegate authority revoked'
   const result = update(umi, {
     asset,
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
     authority: updateDelegate,
   }).sendAndConfirm(umi);
 
@@ -389,7 +389,7 @@ test('an updateDelegate additionalDelegate cannot update an asset after delegate
   const result = update(umi, {
     asset,
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
     authority: updateDelegate,
   }).sendAndConfirm(umi);
 
@@ -1282,7 +1282,7 @@ test('it can update an asset as delegated owner', async (t) => {
   await update(umi, {
     asset,
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
     authority: owner,
   }).sendAndConfirm(umi);
 
@@ -1297,7 +1297,7 @@ test('it can update an asset as delegated owner', async (t) => {
       additionalDelegates: [],
     },
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
   });
 });
 

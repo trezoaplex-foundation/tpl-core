@@ -1,4 +1,4 @@
-import { PublicKey, publicKey } from '@metaplex-foundation/umi';
+import { PublicKey, publicKey } from '@trezoaplex-foundation/umi';
 import { capitalizeFirstLetter, lowercaseFirstLetter } from '../utils';
 import { AssetV1, CollectionV1, PluginType } from '../generated';
 import { collectionAddress, deriveAssetPlugins, isAssetOwner } from './state';

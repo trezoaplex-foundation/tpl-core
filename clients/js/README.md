@@ -7,42 +7,42 @@ A Umi-compatible JavaScript library for the project.
 1. First, if you're not already using Umi, [follow these instructions to install the Umi framework](https://github.com/metaplex-foundation/umi/blob/main/docs/installation.md).
 2. Next, install this library using the package manager of your choice.
    ```sh
-   npm install @metaplex-foundation/mpl-core
+   npm install @trezoaplex-foundation/tpl-core
    ```
 3. Finally, register the library with your Umi instance like so.
    ```ts
-   import { createUmi } from '@metaplex-foundation/umi-bundle-defaults';
-   import { mplCore } from '@metaplex-foundation/mpl-core';
+   import { createUmi } from '@trezoaplex-foundation/umi-bundle-defaults';
+   import { tplCore } from '@trezoaplex-foundation/tpl-core';
 
    const umi = createUmi('<your rpc endpoint>');
-   umi.use(mplCore());
+   umi.use(tplCore());
    ```
 
-   For using on the frontend wallets, see [this React example](https://github.com/metaplex-foundation/inscriptions-ui-mantine/blob/master/providers/UmiProvider.tsx)
+   For using on the frontend wallets, see [this React exatple](https://github.com/metaplex-foundation/inscriptions-ui-mantine/blob/master/providers/UmiProvider.tsx)
 
    ```ts
-   import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-   import { walletAdapterIdentity } from '@metaplex-foundation/umi-signer-wallet-adapters';
+   import { useConnection, useWallet } from '@trezoa/wallet-adapter-react';
+   import { walletAdapterIdentity } from '@trezoaplex-foundation/umi-signer-wallet-adapters';
 
    export function MyComponent() {
       const wallet = useWallet();
       const { connection } = useConnection();
       const umi = createUmi(connection)
          .use(walletAdapterIdentity(wallet))
-         .use(mplCore())
+         .use(tplCore())
 
       // rest of component
    }
    ```
 
-4. Examples
+4. Exatples
    ```ts
    // Create an asset
    const assetAddress = generateSigner(umi);
    const owner = generateSigner(umi);
    await create(umi, {
      name: 'Test Asset',
-     uri: 'https://example.com/asset.json',
+     uri: 'https://exatple.com/asset.json',
      asset: assetAddress,
      owner: owner.publicKey, // optional, will default to payer
    }).sendAndConfirm(umi);
@@ -55,7 +55,7 @@ A Umi-compatible JavaScript library for the project.
    const collectionAddress = generateSigner(umi);
    await createCollection(umi, {
      name: 'Test Collection',
-     uri: 'https://example.com/collection.json',
+     uri: 'https://exatple.com/collection.json',
      collection: collectionAddress,
      updateAuthority: collectionUpdateAuthority.publicKey, // optional, defaults to payer
    }).sendAndConfirm(umi);
@@ -66,7 +66,7 @@ A Umi-compatible JavaScript library for the project.
    // Create an asset in a collection, the authority must be the updateAuthority of the collection
    await create(umi, {
      name: 'Test Asset',
-     uri: 'https://example.com/asset.json',
+     uri: 'https://exatple.com/asset.json',
      asset: assetAddress,
      collection,
      authority: collectionUpdateAuthority, // optional, defaults to payer
@@ -105,7 +105,7 @@ A Umi-compatible JavaScript library for the project.
    // Coming soon
 
    ```
-5. Some advanced examples
+5. Some advanced exatples
    ```ts
    const umi = await createUmi();
 
@@ -147,7 +147,7 @@ A Umi-compatible JavaScript library for the project.
 
    await createCollection(umi, {
      name: 'Test Collection',
-     uri: 'https://example.com/collection.json',
+     uri: 'https://exatple.com/collection.json',
      collection: collectionAddress,
      plugins: [
        {
@@ -173,13 +173,13 @@ A Umi-compatible JavaScript library for the project.
    // Assets in a collection will inherit the collection's authority-managed plugins, in this case the royalties plugin
    await create(umi, {
      name: 'Test Asset',
-     uri: 'https://example.com/asset.json',
+     uri: 'https://exatple.com/asset.json',
      asset: assetAddress,
      collection: await fetchCollectionV1(umi, collectionAddress.publicKey),
    }).sendAndConfirm(umi);
    ```
 
-You can learn more about this library's API by reading its generated [TypeDoc documentation](https://mpl-core-js-docs.vercel.app).
+You can learn more about this library's API by reading its generated [TypeDoc documentation](https://tpl-core-js-docs.vercel.app).
 
 ## Contributing
 

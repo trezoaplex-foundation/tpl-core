@@ -4,7 +4,7 @@ import {
   option,
   tuple,
   u64,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 import {
   Key,
   PluginType,

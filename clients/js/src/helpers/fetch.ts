@@ -4,7 +4,7 @@ import {
   PublicKey,
   RpcGetAccountOptions,
   Signer,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   AssetV1,
   CollectionV1,
@@ -54,7 +54,7 @@ export const deriveAssetPluginsWithFetch = async (
 
 /**
  * Helper function to fetch assets by owner using GPA. For more filters, use the `getAssetV1GpaBuilder` directly.
- * For faster performance or more flexible queries, use DAS with `mpl-core-das` package.
+ * For faster performance or more flexible queries, use DAS with `tpl-core-das` package.
  *
  * @param umi Context
  * @param owner Owner of the assets
@@ -80,7 +80,7 @@ export const fetchAssetsByOwner = async (
 
 /**
  * Helper function to fetch assets by collection using GPA. For more filters, use the `getAssetV1GpaBuilder` directly.
- * For faster performance or more flexible queries, use DAS with `mpl-core-das` package.
+ * For faster performance or more flexible queries, use DAS with `tpl-core-das` package.
  *
  * @param umi Context
  * @param collection Assets that belong to this collection
@@ -108,7 +108,7 @@ export const fetchAssetsByCollection = async (
 
 /**
  * Helper function to fetch collections by update authority using GPA. For more filters, use the `getCollectionV1GpaBuilder` directly.
- * For faster performance or more flexible queries, use DAS with `mpl-core-das` package.
+ * For faster performance or more flexible queries, use DAS with `tpl-core-das` package.
  *
  * @param umi Context
  * @param authority Update authority of the collections

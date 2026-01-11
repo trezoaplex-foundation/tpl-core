@@ -18,14 +18,14 @@ import {
   deserializeAccount,
   gpaBuilder,
   publicKey as toPublicKey,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   Serializer,
   bytes,
   publicKey as publicKeySerializer,
   string,
   struct,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 
 export type AssetSigner = Account<AssetSignerAccountData>;
 
@@ -104,7 +104,7 @@ export function getAssetSignerGpaBuilder(
   context: Pick<Context, 'rpc' | 'programs'>
 ) {
   const programId = context.programs.getPublicKey(
-    'mplCore',
+    'tplCore',
     'CoREENxT6tW1HoK8ypY1SxRMZTcVPm7R94rH4PZNhX7d'
   );
   return gpaBuilder(context, programId)
@@ -126,11 +126,11 @@ export function findAssetSignerPda(
   }
 ): Pda {
   const programId = context.programs.getPublicKey(
-    'mplCore',
+    'tplCore',
     'CoREENxT6tW1HoK8ypY1SxRMZTcVPm7R94rH4PZNhX7d'
   );
   return context.eddsa.findPda(programId, [
-    string({ size: 'variable' }).serialize('mpl-core-execute'),
+    string({ size: 'variable' }).serialize('tpl-core-execute'),
     publicKeySerializer().serialize(seeds.asset),
   ]);
 }

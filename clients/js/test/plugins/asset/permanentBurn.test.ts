@@ -3,7 +3,7 @@ import {
   generateSigner,
   assertAccountExists,
   sol,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   pluginAuthorityPair,
   burnV1,

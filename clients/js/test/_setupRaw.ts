@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { createUmi as basecreateUmi } from '@metaplex-foundation/umi-bundle-tests';
+import { createUmi as basecreateUmi } from '@trezoaplex-foundation/umi-bundle-tests';
 import { Assertions } from 'ava';
 import {
   PublicKey,
@@ -8,14 +8,14 @@ import {
   assertAccountExists,
   generateSigner,
   publicKey,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   DataState,
   Key,
   createV1,
   fetchAssetV1,
   fetchCollectionV1,
-  mplCore,
+  tplCore,
   createCollectionV1 as baseCreateCollection,
   CollectionV1,
   AssetV1,
@@ -27,7 +27,7 @@ import {
   fetchAsset,
 } from '../src';
 
-export const createUmi = async () => (await basecreateUmi()).use(mplCore());
+export const createUmi = async () => (await basecreateUmi()).use(tplCore());
 
 export type CreateAssetHelperArgs = {
   owner?: PublicKey | Signer;
@@ -44,12 +44,12 @@ export type CreateAssetHelperArgs = {
 
 export const DEFAULT_ASSET = {
   name: 'Test Asset',
-  uri: 'https://example.com/asset',
+  uri: 'https://exatple.com/asset',
 };
 
 export const DEFAULT_COLLECTION = {
   name: 'Test Collection',
-  uri: 'https://example.com/collection',
+  uri: 'https://exatple.com/collection',
 };
 
 export const createAsset = async (

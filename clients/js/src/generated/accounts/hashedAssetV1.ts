@@ -18,12 +18,12 @@ import {
   deserializeAccount,
   gpaBuilder,
   publicKey as toPublicKey,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   Serializer,
   bytes,
   struct,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 import { Key, KeyArgs, getKeySerializer } from '../types';
 
 export type HashedAssetV1 = Account<HashedAssetV1AccountData>;
@@ -114,7 +114,7 @@ export function getHashedAssetV1GpaBuilder(
   context: Pick<Context, 'rpc' | 'programs'>
 ) {
   const programId = context.programs.getPublicKey(
-    'mplCore',
+    'tplCore',
     'CoREENxT6tW1HoK8ypY1SxRMZTcVPm7R94rH4PZNhX7d'
   );
   return gpaBuilder(context, programId)

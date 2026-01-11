@@ -1,13 +1,13 @@
 #![cfg(feature = "test-sbf")]
 pub mod setup;
-use mpl_core::{
+use tpl_core::{
     instructions::TransferV1Builder,
     types::{Creator, Plugin, PluginAuthorityPair, Royalties, RuleSet, UpdateAuthority},
 };
 pub use setup::*;
 
-use solana_program_test::tokio;
-use solana_sdk::{signature::Keypair, signer::Signer, transaction::Transaction};
+use trezoa_program_test::tokio;
+use trezoa_sdk::{signature::Keypair, signer::Signer, transaction::Transaction};
 
 #[tokio::test]
 async fn transfer_asset_as_owner() {

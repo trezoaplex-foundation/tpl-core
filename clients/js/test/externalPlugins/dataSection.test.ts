@@ -1,5 +1,5 @@
-import { SPL_SYSTEM_PROGRAM_ID } from '@metaplex-foundation/mpl-toolbox';
-import { generateSigner } from '@metaplex-foundation/umi';
+import { SPL_SYSTEM_PROGRAM_ID } from '@trezoaplex-foundation/tpl-toolbox';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import { createCollection, createAsset } from '../_setupSdk';
 import { createUmi, DEFAULT_ASSET } from '../_setupRaw';

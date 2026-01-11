@@ -1,4 +1,4 @@
-import { Context } from '@metaplex-foundation/umi';
+import { Context } from '@trezoaplex-foundation/umi';
 import { updatePluginV1, updateExternalPluginAdapterV1 } from '../generated';
 import {
   createExternalPluginAdapterUpdateInfo,

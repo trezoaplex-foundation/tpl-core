@@ -1,6 +1,6 @@
 #![cfg(feature = "test-sbf")]
 pub mod setup;
-use mpl_core::{
+use tpl_core::{
     accounts::{BaseAssetV1, PluginHeaderV1},
     fetch_plugin, fetch_plugins, list_plugins,
     types::{
@@ -11,9 +11,9 @@ use mpl_core::{
 };
 pub use setup::*;
 
-use solana_program::account_info::AccountInfo;
-use solana_program_test::tokio;
-use solana_sdk::{signature::Keypair, signer::Signer};
+use trezoa_program::account_info::AccountInfo;
+use trezoa_program_test::tokio;
+use trezoa_sdk::{signature::Keypair, signer::Signer};
 use std::mem::size_of;
 
 #[tokio::test]

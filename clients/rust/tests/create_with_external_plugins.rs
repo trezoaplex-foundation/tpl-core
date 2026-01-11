@@ -3,7 +3,7 @@ pub mod setup;
 use serde_json::json;
 use std::borrow::BorrowMut;
 
-use mpl_core::{
+use tpl_core::{
     accounts::BaseAssetV1,
     convert_external_plugin_adapter_data_to_string,
     errors::MplCoreError,
@@ -21,9 +21,9 @@ use mpl_core::{
 
 pub use setup::*;
 
-use solana_program::pubkey;
-use solana_program_test::tokio;
-use solana_sdk::{
+use trezoa_program::pubkey;
+use trezoa_program_test::tokio;
+use trezoa_sdk::{
     account_info::AccountInfo, pubkey::Pubkey, signature::Keypair, signer::Signer,
     transaction::Transaction,
 };

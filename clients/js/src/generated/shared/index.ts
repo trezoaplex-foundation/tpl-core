@@ -14,7 +14,7 @@ import {
   PublicKey,
   Signer,
   isPda,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 
 /**
  * Transforms the given object such that the given keys are optional.

@@ -1,4 +1,4 @@
-import { generateSigner, publicKey } from '@metaplex-foundation/umi';
+import { generateSigner, publicKey } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import { DataState, createV1 /* fetchAsset, fetchHashedAsset */ } from '../src';
 import { createUmi } from './_setupRaw';
@@ -13,7 +13,7 @@ test('fetch account info for account state', async (t) => {
     dataState: DataState.AccountState,
     asset: assetAddress,
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
   }).sendAndConfirm(umi);
 
   // Print the size of the account.
@@ -39,7 +39,7 @@ test.skip('fetch account info for ledger state', async (t) => {
     dataState: DataState.AccountState,
     asset: assetAddress,
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
     logWrapper: publicKey('noopb9bkMVfRPU8AsbpTUg8AQkHtKwMYZiFUjNRtMmV'),
   }).sendAndConfirm(umi);
 

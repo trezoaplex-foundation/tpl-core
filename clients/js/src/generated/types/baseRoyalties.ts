@@ -11,7 +11,7 @@ import {
   array,
   struct,
   u16,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 import {
   BaseRuleSet,
   BaseRuleSetArgs,

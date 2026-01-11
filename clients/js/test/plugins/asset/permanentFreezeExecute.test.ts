@@ -1,10 +1,10 @@
-import { transferSol } from '@metaplex-foundation/mpl-toolbox';
+import { transferSol } from '@trezoaplex-foundation/tpl-toolbox';
 import {
   createNoopSigner,
   generateSigner,
   publicKey,
-  sol,
-} from '@metaplex-foundation/umi';
+  trz,
+} from '@trezoaplex-foundation/umi';
 import test from 'ava';
 
 import {
@@ -32,7 +32,7 @@ test('it can freeze and unfreeze execute with PermanentFreezeExecute', async (t)
   // Given a Umi instance
   const umi = await createUmi();
   const owner = generateSigner(umi);
-  await umi.rpc.airdrop(owner.publicKey, sol(1));
+  await umi.rpc.airdrop(owner.publicKey, trz(1));
 
   // Create an asset with PermanentFreezeExecute plugin (frozen by default)
   const assetSigner = generateSigner(umi);
@@ -41,7 +41,7 @@ test('it can freeze and unfreeze execute with PermanentFreezeExecute', async (t)
     asset: assetSigner,
     owner: owner.publicKey,
     name: 'Test Asset',
-    uri: 'https://example.com/asset',
+    uri: 'https://exatple.com/asset',
     plugins: [
       {
         type: 'PermanentFreezeExecute',
@@ -73,7 +73,7 @@ test('it can freeze and unfreeze execute with PermanentFreezeExecute', async (t)
   await transferSol(umi, {
     source: umi.identity,
     destination: publicKey(assetSignerPda),
-    amount: sol(0.5),
+    amount: trz(0.5),
   }).sendAndConfirm(umi);
 
   // Attempt Execute → should fail because plugin is frozen
@@ -85,7 +85,7 @@ test('it can freeze and unfreeze execute with PermanentFreezeExecute', async (t)
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSignerPda)),
       destination: recipient.publicKey,
-      amount: sol(0.1),
+      amount: trz(0.1),
     }),
   }).sendAndConfirm(umi);
 
@@ -120,13 +120,13 @@ test('it can freeze and unfreeze execute with PermanentFreezeExecute', async (t)
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSignerPda)),
       destination: recipient.publicKey,
-      amount: sol(0.1),
+      amount: trz(0.1),
     }),
   }).sendAndConfirm(umi);
 
-  // Verify recipient received the SOL
+  // Verify recipient received the TRZ
   const recipientBalance = await umi.rpc.getBalance(recipient.publicKey);
-  t.true(recipientBalance.basisPoints >= sol(0.1).basisPoints);
+  t.true(recipientBalance.basisPoints >= trz(0.1).basisPoints);
 });
 
 test('it cannot add PermanentFreezeExecute after creation', async (t) => {
@@ -170,7 +170,7 @@ test('PermanentFreezeExecute persists after transfer to new owner and remains fr
     asset: assetSigner,
     owner: originalOwner.publicKey,
     name: 'Test Asset',
-    uri: 'https://example.com/asset',
+    uri: 'https://exatple.com/asset',
     plugins: [
       {
         type: 'PermanentFreezeExecute',
@@ -203,7 +203,7 @@ test('PermanentFreezeExecute persists after transfer to new owner and remains fr
   await transferSol(umi, {
     source: umi.identity,
     destination: publicKey(assetSignerPda),
-    amount: sol(0.5),
+    amount: trz(0.5),
   }).sendAndConfirm(umi);
 
   // Transfer the asset to a new owner
@@ -236,7 +236,7 @@ test('PermanentFreezeExecute persists after transfer to new owner and remains fr
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSignerPda)),
       destination: recipient.publicKey,
-      amount: sol(0.1),
+      amount: trz(0.1),
     }),
   }).sendAndConfirm(umi);
 
@@ -286,7 +286,7 @@ test('it cannot remove PermanentFreezeExecute plugin if frozen', async (t) => {
   await create(umi, {
     asset: assetSigner,
     name: 'Test Asset',
-    uri: 'https://example.com/asset',
+    uri: 'https://exatple.com/asset',
     plugins: [
       {
         type: 'PermanentFreezeExecute',
@@ -326,7 +326,7 @@ test('it can remove PermanentFreezeExecute plugin if unfrozen', async (t) => {
   await create(umi, {
     asset: assetSigner,
     name: 'Test Asset',
-    uri: 'https://example.com/asset',
+    uri: 'https://exatple.com/asset',
     plugins: [
       {
         type: 'PermanentFreezeExecute',
@@ -357,7 +357,7 @@ test('it can add other plugins alongside PermanentFreezeExecute', async (t) => {
   await create(umi, {
     asset: assetSigner,
     name: 'Test Asset',
-    uri: 'https://example.com/asset',
+    uri: 'https://exatple.com/asset',
     plugins: [
       {
         type: 'PermanentFreezeExecute',
@@ -405,7 +405,7 @@ test('PermanentFreezeExecute blocks execute but allows burn', async (t) => {
     asset: assetSigner,
     owner: owner.publicKey,
     name: 'Test Asset',
-    uri: 'https://example.com/asset',
+    uri: 'https://exatple.com/asset',
     plugins: [
       {
         type: 'PermanentFreezeExecute',
@@ -424,7 +424,7 @@ test('PermanentFreezeExecute blocks execute but allows burn', async (t) => {
   await transferSol(umi, {
     source: umi.identity,
     destination: publicKey(assetSignerPda),
-    amount: sol(0.5),
+    amount: trz(0.5),
   }).sendAndConfirm(umi);
 
   // Verify execute is blocked
@@ -435,7 +435,7 @@ test('PermanentFreezeExecute blocks execute but allows burn', async (t) => {
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSignerPda)),
       destination: recipient.publicKey,
-      amount: sol(0.1),
+      amount: trz(0.1),
     }),
   }).sendAndConfirm(umi);
 
@@ -470,7 +470,7 @@ test('owner cannot remove or unfreeze PermanentFreezeExecute plugin', async (t) 
     asset: assetSigner,
     owner: owner.publicKey,
     name: 'Test Asset',
-    uri: 'https://example.com/asset',
+    uri: 'https://exatple.com/asset',
     plugins: [
       {
         type: 'PermanentFreezeExecute',

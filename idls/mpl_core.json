@@ -1,6 +1,6 @@
 {
   "version": "0.2.0",
-  "name": "mpl_core_program",
+  "name": "tpl_core_program",
   "instructions": [
     {
       "name": "CreateV1",
@@ -71,7 +71,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -189,7 +189,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -248,7 +248,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -316,7 +316,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -375,7 +375,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -443,7 +443,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -502,7 +502,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -570,7 +570,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -629,7 +629,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -697,7 +697,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -756,7 +756,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -825,7 +825,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -876,7 +876,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -953,7 +953,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -1021,7 +1021,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -1089,7 +1089,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -1157,7 +1157,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -1225,7 +1225,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -1337,7 +1337,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -1455,7 +1455,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -1514,7 +1514,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -1582,7 +1582,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -1641,7 +1641,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -1709,7 +1709,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -1768,7 +1768,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -1845,7 +1845,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -1913,7 +1913,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -1990,7 +1990,7 @@
           "isSigner": false,
           "isOptional": true,
           "docs": [
-            "The SPL Noop Program"
+            "The TPL Noop Program"
           ]
         }
       ],
@@ -4165,7 +4165,7 @@
             "name": "NoOffset"
           },
           {
-            "name": "Anchor"
+            "name": "Trezoa"
           },
           {
             "name": "Custom",

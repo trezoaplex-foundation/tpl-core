@@ -2,7 +2,7 @@ import {
   Context,
   PublicKey,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import { ERR_CANNOT_DELEGATE } from './errors';
 import { addPluginV1, AssetV1 } from '../generated';
 import {

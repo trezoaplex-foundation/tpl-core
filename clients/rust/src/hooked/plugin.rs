@@ -1,9 +1,9 @@
-#[cfg(feature = "anchor")]
+#[cfg(feature = "trezoa")]
 use anchor_lang::prelude::AnchorDeserialize as CrateDeserialize;
-#[cfg(not(feature = "anchor"))]
+#[cfg(not(feature = "trezoa"))]
 use borsh::BorshDeserialize as CrateDeserialize;
 use num_traits::FromPrimitive;
-use solana_program::{account_info::AccountInfo, pubkey::Pubkey};
+use trezoa_program::{account_info::AccountInfo, pubkey::Pubkey};
 
 use crate::{
     accounts::{BaseAssetV1, BaseCollectionV1, PluginHeaderV1},
@@ -18,12 +18,12 @@ use crate::{
     FreezeExecutePlugin, ImmutableMetadataPlugin, LifecycleHookWithData, MasterEditionPlugin,
     PermanentBurnDelegatePlugin, PermanentFreezeDelegatePlugin, PermanentFreezeExecutePlugin,
     PermanentTransferDelegatePlugin, PluginRegistryV1Safe, PluginsList, RegistryRecordSafe,
-    RoyaltiesPlugin, SolanaAccount, TransferDelegatePlugin, UpdateDelegatePlugin,
+    RoyaltiesPlugin, TrezoaAccount, TransferDelegatePlugin, UpdateDelegatePlugin,
     VerifiedCreatorsPlugin,
 };
 
 /// Fetch the plugin from the registry.
-pub fn fetch_plugin<T: DataBlob + SolanaAccount, U: CrateDeserialize>(
+pub fn fetch_plugin<T: DataBlob + TrezoaAccount, U: CrateDeserialize>(
     account: &AccountInfo,
     plugin_type: PluginType,
 ) -> Result<(PluginAuthority, U, usize), std::io::Error> {
@@ -127,7 +127,7 @@ pub fn fetch_plugins(account_data: &[u8]) -> Result<Vec<RegistryRecord>, std::io
 }
 
 /// Fetch the external plugin adapter from the registry.
-pub fn fetch_external_plugin_adapter<T: DataBlob + SolanaAccount, U: CrateDeserialize>(
+pub fn fetch_external_plugin_adapter<T: DataBlob + TrezoaAccount, U: CrateDeserialize>(
     account: &AccountInfo,
     core: Option<&T>,
     plugin_key: &ExternalPluginAdapterKey,
@@ -152,7 +152,7 @@ pub fn fetch_external_plugin_adapter<T: DataBlob + SolanaAccount, U: CrateDeseri
 }
 
 /// Fetch the external plugin adapter from the registry.
-pub fn fetch_wrapped_external_plugin_adapter<T: DataBlob + SolanaAccount>(
+pub fn fetch_wrapped_external_plugin_adapter<T: DataBlob + TrezoaAccount>(
     account: &AccountInfo,
     core: Option<&T>,
     plugin_key: &ExternalPluginAdapterKey,
@@ -188,7 +188,7 @@ fn unwrap_data_offset_and_data_len(
 
 /// Fetch the external plugin adapter data offset and length.  These can be used to
 /// directly slice the account data for use of the external plugin adapter data.
-pub fn fetch_external_plugin_adapter_data_info<T: DataBlob + SolanaAccount>(
+pub fn fetch_external_plugin_adapter_data_info<T: DataBlob + TrezoaAccount>(
     account: &AccountInfo,
     core: Option<&T>,
     plugin_key: &ExternalPluginAdapterKey,
@@ -202,7 +202,7 @@ pub fn fetch_external_plugin_adapter_data_info<T: DataBlob + SolanaAccount>(
 }
 
 // Internal helper to fetch just the external registry record for the external plugin key.
-fn fetch_external_registry_record<T: DataBlob + SolanaAccount>(
+fn fetch_external_registry_record<T: DataBlob + TrezoaAccount>(
     account: &AccountInfo,
     core: Option<&T>,
     plugin_key: &ExternalPluginAdapterKey,

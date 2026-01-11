@@ -1,5 +1,5 @@
 import test from 'ava';
-import { generateSigner } from '@metaplex-foundation/umi';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 
 import { addPlugin, update } from '../../../src';
 import { DEFAULT_ASSET, assertAsset, createUmi } from '../../_setupRaw';
@@ -20,7 +20,7 @@ test('it can prevent the asset from metadata updating', async (t) => {
   const result = update(umi, {
     asset,
     name: 'bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
   }).sendAndConfirm(umi);
 
   await t.throwsAsync(result, {
@@ -35,7 +35,7 @@ test('it can mutate its metadata unless ImmutableMetadata plugin is added', asyn
   await update(umi, {
     asset,
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
@@ -43,7 +43,7 @@ test('it can mutate its metadata unless ImmutableMetadata plugin is added', asyn
     owner: umi.identity.publicKey,
     updateAuthority: { type: 'Address', address: umi.identity.publicKey },
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
   });
 
   await addPlugin(umi, {
@@ -56,7 +56,7 @@ test('it can mutate its metadata unless ImmutableMetadata plugin is added', asyn
   const result = update(umi, {
     asset,
     name: 'Test Bread 3',
-    uri: 'https://example.com/bread3',
+    uri: 'https://exatple.com/bread3',
   }).sendAndConfirm(umi);
 
   await t.throwsAsync(result, {

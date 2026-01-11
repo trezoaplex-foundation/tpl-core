@@ -1,4 +1,4 @@
-import { generateSigner, TransactionBuilder } from "@metaplex-foundation/umi";
+import { generateSigner, TransactionBuilder } from "@trezoaplex-foundation/umi";
 import test from "ava";
 import { existsSync, readFileSync, writeFileSync } from "fs";
 import { addPluginV1, addressPluginAuthority, createCollectionV1, createPlugin, createV1, pluginAuthorityPair, PluginType, revokePluginAuthorityV1, transferV1, updatePluginV1 } from "../src";

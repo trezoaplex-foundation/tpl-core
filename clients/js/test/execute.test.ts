@@ -5,10 +5,10 @@ import {
   lamports,
   publicKey,
   sol,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import test from 'ava';
 
-import { transferSol } from '@metaplex-foundation/mpl-toolbox';
+import { transferSol } from '@trezoaplex-foundation/tpl-toolbox';
 import { execute, findAssetSignerPda } from '../src';
 import { assertAsset, createAsset, createUmi } from './_setupRaw';
 import { createAssetWithCollection, createCollection } from './_setupSdk';

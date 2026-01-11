@@ -1,4 +1,4 @@
-import { Context } from '@metaplex-foundation/umi';
+import { Context } from '@trezoaplex-foundation/umi';
 import { createCollectionV2 } from '../../generated';
 import {
   CollectionPluginAuthorityPairArgsV2,

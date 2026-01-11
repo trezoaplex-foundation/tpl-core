@@ -3,7 +3,7 @@ import {
   Context,
   isSome,
   PublicKey,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   lifecycleHookFromBase,
   LifecycleHookInitInfoArgs,

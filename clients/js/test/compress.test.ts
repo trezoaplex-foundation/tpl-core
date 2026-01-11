@@ -1,4 +1,4 @@
-import { generateSigner, publicKey } from '@metaplex-foundation/umi';
+import { generateSigner, publicKey } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import { getAssetV1AccountDataSerializer } from '../src/hooked';
 import {
@@ -55,7 +55,7 @@ test.skip('it cannot compress an asset if not the owner', async (t) => {
     dataState: DataState.AccountState,
     asset: assetAddress,
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
   }).sendAndConfirm(umi);
 
   // Then an account was created with the correct data.
@@ -66,7 +66,7 @@ test.skip('it cannot compress an asset if not the owner', async (t) => {
     updateAuthority: { type: 'Address', address: umi.identity.publicKey },
     owner: umi.identity.publicKey,
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
   });
 
   const result = compressV1(umi, {
@@ -83,7 +83,7 @@ test.skip('it cannot compress an asset if not the owner', async (t) => {
     updateAuthority: { type: 'Address', address: umi.identity.publicKey },
     owner: umi.identity.publicKey,
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
   });
 });
 
@@ -97,7 +97,7 @@ test('it cannot compress an asset because it is not available', async (t) => {
     dataState: DataState.AccountState,
     asset: assetAddress,
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
   }).sendAndConfirm(umi);
 
   // Then an account was created with the correct data.
@@ -108,7 +108,7 @@ test('it cannot compress an asset because it is not available', async (t) => {
     updateAuthority: { type: 'Address', address: umi.identity.publicKey },
     owner: umi.identity.publicKey,
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
   });
 
   // And when we compress the asset.
@@ -132,7 +132,7 @@ test('it cannot use an invalid system program', async (t) => {
     dataState: DataState.AccountState,
     asset: assetAddress,
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
   }).sendAndConfirm(umi);
 
   // Then an account was created with the correct data.
@@ -143,7 +143,7 @@ test('it cannot use an invalid system program', async (t) => {
     updateAuthority: { type: 'Address', address: umi.identity.publicKey },
     owner: umi.identity.publicKey,
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
   });
 
   // And when we compress the asset.
@@ -168,7 +168,7 @@ test('it cannot use an invalid log wrapper program', async (t) => {
     dataState: DataState.AccountState,
     asset: assetAddress,
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
   }).sendAndConfirm(umi);
 
   // Then an account was created with the correct data.
@@ -179,7 +179,7 @@ test('it cannot use an invalid log wrapper program', async (t) => {
     updateAuthority: { type: 'Address', address: umi.identity.publicKey },
     owner: umi.identity.publicKey,
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
   });
 
   // And when we compress the asset.

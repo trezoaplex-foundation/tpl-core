@@ -165,8 +165,8 @@ pub enum MplCoreError {
     BlockedByBubblegumV2,
 }
 
-impl solana_program::program_error::PrintProgramError for MplCoreError {
+itpl trezoa_program::program_error::PrintProgramError for MplCoreError {
     fn print<E>(&self) {
-        solana_program::msg!(&self.to_string());
+        trezoa_program::msg!(&self.to_string());
     }
 }

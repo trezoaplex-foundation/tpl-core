@@ -19,13 +19,13 @@ import {
   deserializeAccount,
   gpaBuilder,
   publicKey as toPublicKey,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   option,
   publicKey as publicKeySerializer,
   string,
   u64,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 import {
   AssetV1AccountData,
   getAssetV1AccountDataSerializer,
@@ -101,7 +101,7 @@ export function getAssetV1GpaBuilder(
   context: Pick<Context, 'rpc' | 'programs'>
 ) {
   const programId = context.programs.getPublicKey(
-    'mplCore',
+    'tplCore',
     'CoREENxT6tW1HoK8ypY1SxRMZTcVPm7R94rH4PZNhX7d'
   );
   return gpaBuilder(context, programId)

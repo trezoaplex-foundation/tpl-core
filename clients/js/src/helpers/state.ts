@@ -1,4 +1,4 @@
-import { PublicKey, publicKey } from '@metaplex-foundation/umi';
+import { PublicKey, publicKey } from '@trezoaplex-foundation/umi';
 import { LinkedLifecycleHookPlugin } from '../plugins/linkedLifecycleHook';
 import { AssetV1, CollectionV1 } from '../generated';
 import {

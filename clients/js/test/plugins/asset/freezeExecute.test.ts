@@ -1,10 +1,10 @@
-import { transferSol } from '@metaplex-foundation/mpl-toolbox';
+import { transferSol } from '@trezoaplex-foundation/tpl-toolbox';
 import {
   createNoopSigner,
   generateSigner,
   publicKey,
-  sol,
-} from '@metaplex-foundation/umi';
+  trz,
+} from '@trezoaplex-foundation/umi';
 import test from 'ava';
 
 import {
@@ -30,7 +30,7 @@ test('it covers the freeze execute backed NFT flow', async (t) => {
   await create(umi, {
     asset: assetSigner,
     name: 'Test Asset',
-    uri: 'https://example.com/asset',
+    uri: 'https://exatple.com/asset',
     plugins: [{ type: 'FreezeExecute', frozen: true }],
   }).sendAndConfirm(umi);
 
@@ -43,7 +43,7 @@ test('it covers the freeze execute backed NFT flow', async (t) => {
   });
 
   // ----------------------------------
-  // 2. Deposit backing SOL into the asset account (simulate 0.5 SOL backing).
+  // 2. Deposit backing TRZ into the asset account (simulate 0.5 TRZ backing).
   // ----------------------------------
   // The Execute instruction pulls funds from the asset signer PDA, not the
   // asset account itself, so credit that PDA with some lamports.
@@ -54,7 +54,7 @@ test('it covers the freeze execute backed NFT flow', async (t) => {
   await transferSol(umi, {
     source: umi.identity,
     destination: publicKey(assetSignerPda),
-    amount: sol(0.5),
+    amount: trz(0.5),
   }).sendAndConfirm(umi);
 
   // ----------------------------------
@@ -67,7 +67,7 @@ test('it covers the freeze execute backed NFT flow', async (t) => {
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSignerPda)),
       destination: recipient.publicKey,
-      amount: sol(0.1),
+      amount: trz(0.1),
     }),
   }).sendAndConfirm(umi);
 

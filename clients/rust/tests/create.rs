@@ -1,12 +1,12 @@
 #![cfg(feature = "test-sbf")]
 pub mod setup;
-use mpl_core::types::{
+use tpl_core::types::{
     FreezeDelegate, Plugin, PluginAuthority, PluginAuthorityPair, UpdateAuthority,
 };
 pub use setup::*;
 
-use solana_program_test::tokio;
-use solana_sdk::{native_token::LAMPORTS_PER_SOL, signature::Keypair, signer::Signer};
+use trezoa_program_test::tokio;
+use trezoa_sdk::{native_token::LAMPORTS_PER_TRZ, signature::Keypair, signer::Signer};
 
 #[tokio::test]
 async fn create_asset_in_account_state() {
@@ -55,7 +55,7 @@ async fn create_asset_with_different_payer() {
 
     let asset = Keypair::new();
     let payer = Keypair::new();
-    airdrop(&mut context, &payer.pubkey(), LAMPORTS_PER_SOL)
+    airdrop(&mut context, &payer.pubkey(), LAMPORTS_PER_TRZ)
         .await
         .unwrap();
     create_asset(
@@ -145,7 +145,7 @@ async fn create_asset_with_different_update_authority() {
 
     let asset = Keypair::new();
     let update_authority = Keypair::new();
-    airdrop(&mut context, &update_authority.pubkey(), LAMPORTS_PER_SOL)
+    airdrop(&mut context, &update_authority.pubkey(), LAMPORTS_PER_TRZ)
         .await
         .unwrap();
     create_asset(
@@ -189,7 +189,7 @@ async fn create_asset_with_plugins_with_different_update_authority() {
 
     let asset = Keypair::new();
     let update_authority = Keypair::new();
-    airdrop(&mut context, &update_authority.pubkey(), LAMPORTS_PER_SOL)
+    airdrop(&mut context, &update_authority.pubkey(), LAMPORTS_PER_TRZ)
         .await
         .unwrap();
     create_asset(

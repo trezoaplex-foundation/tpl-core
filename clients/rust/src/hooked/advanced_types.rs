@@ -1,8 +1,8 @@
-#[cfg(feature = "anchor")]
+#[cfg(feature = "trezoa")]
 use anchor_lang::prelude::AnchorDeserialize;
-#[cfg(not(feature = "anchor"))]
+#[cfg(not(feature = "trezoa"))]
 use borsh::BorshDeserialize;
-use solana_program::pubkey::Pubkey;
+use trezoa_program::pubkey::Pubkey;
 use std::{cmp::Ordering, io::ErrorKind};
 
 use crate::{
@@ -25,7 +25,7 @@ pub enum AuthorityType {
     Address,
 }
 
-impl From<PluginAuthority> for AuthorityType {
+itpl From<PluginAuthority> for AuthorityType {
     fn from(authority: PluginAuthority) -> Self {
         match authority {
             PluginAuthority::None => AuthorityType::None,
@@ -42,7 +42,7 @@ pub struct BaseAuthority {
     pub address: Option<Pubkey>,
 }
 
-impl From<PluginAuthority> for BaseAuthority {
+itpl From<PluginAuthority> for BaseAuthority {
     fn from(authority: PluginAuthority) -> Self {
         match authority {
             PluginAuthority::None => BaseAuthority {
@@ -256,7 +256,7 @@ pub struct RegistryRecordSafe {
     pub offset: u64,
 }
 
-impl RegistryRecordSafe {
+itpl RegistryRecordSafe {
     /// Associated function for sorting `RegistryRecordIndexable` by offset.
     pub fn compare_offsets(a: &RegistryRecordSafe, b: &RegistryRecordSafe) -> Ordering {
         a.offset.cmp(&b.offset)
@@ -275,7 +275,7 @@ pub struct ExternalRegistryRecordSafe {
     pub data_len: Option<u64>,
 }
 
-impl ExternalRegistryRecordSafe {
+itpl ExternalRegistryRecordSafe {
     /// Associated function for sorting `RegistryRecordIndexable` by offset.
     pub fn compare_offsets(
         a: &ExternalRegistryRecordSafe,
@@ -294,7 +294,7 @@ pub struct PluginRegistryV1Safe {
     pub external_registry: Vec<ExternalRegistryRecordSafe>,
 }
 
-impl PluginRegistryV1Safe {
+itpl PluginRegistryV1Safe {
     #[inline(always)]
     pub fn from_bytes(data: &[u8]) -> Result<Self, std::io::Error> {
         let mut data: &[u8] = data;
@@ -348,7 +348,7 @@ impl PluginRegistryV1Safe {
     }
 }
 
-impl From<&ExternalPluginAdapter> for ExternalPluginAdapterKey {
+itpl From<&ExternalPluginAdapter> for ExternalPluginAdapterKey {
     fn from(plugin: &ExternalPluginAdapter) -> Self {
         match plugin {
             ExternalPluginAdapter::LinkedAppData(app_data) => {

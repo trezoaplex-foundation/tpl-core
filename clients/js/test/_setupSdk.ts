@@ -5,7 +5,7 @@ import {
   Umi,
   generateSigner,
   publicKey,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   DataState,
   fetchAssetV1,

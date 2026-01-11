@@ -1,4 +1,4 @@
-import { Context } from '@metaplex-foundation/umi';
+import { Context } from '@trezoaplex-foundation/umi';
 import {
   addCollectionExternalPluginAdapterV1,
   addCollectionPluginV1,

@@ -5,6 +5,6 @@
 //! [https://github.com/metaplex-foundation/kinobi]
 //!
 
-pub(crate) mod mpl_core;
+pub(crate) mod tpl_core;
 
-pub use self::mpl_core::MplCoreError;
+pub use self::tpl_core::MplCoreError;

@@ -3,7 +3,7 @@ import {
   Instruction,
   Signer,
   TransactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 
 import {
   AssetV1,

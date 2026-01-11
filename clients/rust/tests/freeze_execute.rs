@@ -3,18 +3,18 @@
 #![cfg(feature = "test-sbf")]
 
 pub mod setup;
-use mpl_core::{
+use tpl_core::{
     errors::MplCoreError,
     instructions::{BurnV1Builder, ExecuteV1Builder},
     types::{FreezeExecute, Plugin, PluginAuthority, PluginAuthorityPair},
 };
 use setup::*;
 
-use solana_program::{pubkey::Pubkey, system_instruction, system_program};
-use solana_program_test::tokio;
-use solana_sdk::{signature::Keypair, signer::Signer, transaction::Transaction};
+use trezoa_program::{pubkey::Pubkey, system_instruction, system_program};
+use trezoa_program_test::tokio;
+use trezoa_sdk::{signature::Keypair, signer::Signer, transaction::Transaction};
 
-const FREEZE_EXECUTE_PREFIX: &str = "mpl-core-execute";
+const FREEZE_EXECUTE_PREFIX: &str = "tpl-core-execute";
 
 #[tokio::test]
 async fn test_freeze_execute_backed_nft_flow() {
@@ -23,7 +23,7 @@ async fn test_freeze_execute_backed_nft_flow() {
     // ----------------------------------
     let mut context = program_test().start_with_context().await;
 
-    // Fund payer so we can deposit SOL to the asset later.
+    // Fund payer so we can deposit TRZ to the asset later.
     let payer_key = context.payer.pubkey();
     airdrop(&mut context, &payer_key, 2_000_000_000)
         .await
@@ -73,9 +73,9 @@ async fn test_freeze_execute_backed_nft_flow() {
     .await;
 
     // ----------------------------------
-    // 2. Deposit backing SOL into the asset account (simulate 0.5 SOL backing)
+    // 2. Deposit backing TRZ into the asset account (simulate 0.5 TRZ backing)
     // ----------------------------------
-    let backing_amount: u64 = 500_000_000; // 0.5 SOL
+    let backing_amount: u64 = 500_000_000; // 0.5 TRZ
     let transfer_ix = system_instruction::transfer(&payer_key, &asset.pubkey(), backing_amount);
     let tx = Transaction::new_signed_with_payer(
         &[transfer_ix],
@@ -99,7 +99,7 @@ async fn test_freeze_execute_backed_nft_flow() {
     // ----------------------------------
     let (asset_signer, _) = Pubkey::find_program_address(
         &[FREEZE_EXECUTE_PREFIX.as_bytes(), asset.pubkey().as_ref()],
-        &mpl_core::ID,
+        &tpl_core::ID,
     );
 
     let execute_ix = ExecuteV1Builder::new()

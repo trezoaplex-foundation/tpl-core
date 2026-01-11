@@ -1,10 +1,10 @@
-import { transferSol } from '@metaplex-foundation/mpl-toolbox';
+import { transferSol } from '@trezoaplex-foundation/tpl-toolbox';
 import {
   createNoopSigner,
   generateSigner,
   publicKey,
-  sol,
-} from '@metaplex-foundation/umi';
+  trz,
+} from '@trezoaplex-foundation/umi';
 import test from 'ava';
 
 import {
@@ -225,7 +225,7 @@ test('it can freeze and unfreeze a collection', async (t) => {
 test('assets inherit PermanentFreezeExecute plugin from collection and execute is blocked when frozen', async (t) => {
   const umi = await createUmi();
   const owner = generateSigner(umi);
-  await umi.rpc.airdrop(owner.publicKey, sol(1));
+  await umi.rpc.airdrop(owner.publicKey, trz(1));
 
   // Create collection with PermanentFreezeExecute plugin frozen
   const collection = await createCollection(umi, {
@@ -244,7 +244,7 @@ test('assets inherit PermanentFreezeExecute plugin from collection and execute i
     owner: owner.publicKey,
     collection,
     name: 'Test Asset',
-    uri: 'https://example.com/asset',
+    uri: 'https://exatple.com/asset',
   }).sendAndConfirm(umi);
 
   const asset = await fetchAssetV1(umi, assetSigner.publicKey);
@@ -266,7 +266,7 @@ test('assets inherit PermanentFreezeExecute plugin from collection and execute i
   await transferSol(umi, {
     source: umi.identity,
     destination: publicKey(assetSignerPda),
-    amount: sol(0.5),
+    amount: trz(0.5),
   }).sendAndConfirm(umi);
 
   // Execute should be blocked due to collection plugin
@@ -278,7 +278,7 @@ test('assets inherit PermanentFreezeExecute plugin from collection and execute i
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSignerPda)),
       destination: recipient.publicKey,
-      amount: sol(0.1),
+      amount: trz(0.1),
     }),
   }).sendAndConfirm(umi);
 
@@ -301,19 +301,19 @@ test('assets inherit PermanentFreezeExecute plugin from collection and execute i
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSignerPda)),
       destination: recipient.publicKey,
-      amount: sol(0.1),
+      amount: trz(0.1),
     }),
   }).sendAndConfirm(umi);
 
-  // Verify recipient received the SOL
+  // Verify recipient received the TRZ
   const recipientBalance = await umi.rpc.getBalance(recipient.publicKey);
-  t.true(recipientBalance.basisPoints >= sol(0.1).basisPoints);
+  t.true(recipientBalance.basisPoints >= trz(0.1).basisPoints);
 });
 
 test('asset-level PermanentFreezeExecute overrides collection-level plugin when unfrozen', async (t) => {
   const umi = await createUmi();
   const owner = generateSigner(umi);
-  await umi.rpc.airdrop(owner.publicKey, sol(1));
+  await umi.rpc.airdrop(owner.publicKey, trz(1));
 
   // Create collection with PermanentFreezeExecute plugin frozen
   const collection = await createCollection(umi, {
@@ -332,7 +332,7 @@ test('asset-level PermanentFreezeExecute overrides collection-level plugin when 
     owner: owner.publicKey,
     collection,
     name: 'Test Asset',
-    uri: 'https://example.com/asset',
+    uri: 'https://exatple.com/asset',
     plugins: [
       {
         type: 'PermanentFreezeExecute',
@@ -365,7 +365,7 @@ test('asset-level PermanentFreezeExecute overrides collection-level plugin when 
   await transferSol(umi, {
     source: umi.identity,
     destination: publicKey(assetSignerPda),
-    amount: sol(0.5),
+    amount: trz(0.5),
   }).sendAndConfirm(umi);
 
   // Execute should succeed because asset-level plugin overrides collection (asset plugin is unfrozen)
@@ -377,21 +377,21 @@ test('asset-level PermanentFreezeExecute overrides collection-level plugin when 
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSignerPda)),
       destination: recipient.publicKey,
-      amount: sol(0.1),
+      amount: trz(0.1),
     }),
   }).sendAndConfirm(umi);
 
-  // Verify recipient received the SOL
+  // Verify recipient received the TRZ
   const recipientBalance = await umi.rpc.getBalance(recipient.publicKey);
-  t.true(recipientBalance.basisPoints >= sol(0.1).basisPoints);
+  t.true(recipientBalance.basisPoints >= trz(0.1).basisPoints);
 });
 
 test('collection PermanentFreezeExecute persists through asset transfer and still blocks execute', async (t) => {
   const umi = await createUmi();
   const originalOwner = generateSigner(umi);
   const newOwner = generateSigner(umi);
-  await umi.rpc.airdrop(originalOwner.publicKey, sol(1));
-  await umi.rpc.airdrop(newOwner.publicKey, sol(1));
+  await umi.rpc.airdrop(originalOwner.publicKey, trz(1));
+  await umi.rpc.airdrop(newOwner.publicKey, trz(1));
 
   // Create collection with PermanentFreezeExecute plugin frozen
   const collection = await createCollection(umi, {
@@ -410,7 +410,7 @@ test('collection PermanentFreezeExecute persists through asset transfer and stil
     owner: originalOwner.publicKey,
     collection,
     name: 'Test Asset',
-    uri: 'https://example.com/asset',
+    uri: 'https://exatple.com/asset',
   }).sendAndConfirm(umi);
 
   const asset = await fetchAssetV1(umi, assetSigner.publicKey);
@@ -423,7 +423,7 @@ test('collection PermanentFreezeExecute persists through asset transfer and stil
   await transferSol(umi, {
     source: umi.identity,
     destination: publicKey(assetSignerPda),
-    amount: sol(0.5),
+    amount: trz(0.5),
   }).sendAndConfirm(umi);
 
   const recipient1 = generateSigner(umi);
@@ -434,7 +434,7 @@ test('collection PermanentFreezeExecute persists through asset transfer and stil
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSignerPda)),
       destination: recipient1.publicKey,
-      amount: sol(0.1),
+      amount: trz(0.1),
     }),
   }).sendAndConfirm(umi);
 
@@ -466,7 +466,7 @@ test('collection PermanentFreezeExecute persists through asset transfer and stil
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSignerPda)),
       destination: recipient2.publicKey,
-      amount: sol(0.1),
+      amount: trz(0.1),
     }),
   }).sendAndConfirm(umi);
 
@@ -502,13 +502,13 @@ test('collection PermanentFreezeExecute persists through asset transfer and stil
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSignerPda)),
       destination: recipient2.publicKey,
-      amount: sol(0.1),
+      amount: trz(0.1),
     }),
   }).sendAndConfirm(umi);
 
-  // Verify recipient received the SOL
+  // Verify recipient received the TRZ
   const recipientBalance = await umi.rpc.getBalance(recipient2.publicKey);
-  t.true(recipientBalance.basisPoints >= sol(0.1).basisPoints);
+  t.true(recipientBalance.basisPoints >= trz(0.1).basisPoints);
 });
 
 test('collection owner cannot remove or unfreeze PermanentFreezeExecute plugin', async (t) => {

@@ -24,7 +24,7 @@ module.exports = {
       // You may configure which ones to fetch from the cluster when building
       // programs within the `configs/program-scripts/dump.sh` script.
       {
-        label: "SPL Noop",
+        label: "TPL Noop",
         programId: "noopb9bkMVfRPU8AsbpTUg8AQkHtKwMYZiFUjNRtMmV",
         deployPath: getProgram("spl_noop.so"),
       },

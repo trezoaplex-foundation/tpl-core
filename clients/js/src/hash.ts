@@ -1,4 +1,4 @@
-import { mergeBytes } from '@metaplex-foundation/umi/serializers';
+import { mergeBytes } from '@trezoaplex-foundation/umi/serializers';
 import { keccak_256 } from '@noble/hashes/sha3';
 
 export function hash(input: Uint8Array | Uint8Array[]): Uint8Array {

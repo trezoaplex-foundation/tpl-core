@@ -6,7 +6,7 @@
  * @see https://github.com/metaplex-foundation/kinobi
  */
 
-import { Option, OptionOrNullable } from '@metaplex-foundation/umi';
+import { Option, OptionOrNullable } from '@trezoaplex-foundation/umi';
 import {
   Serializer,
   array,
@@ -14,7 +14,7 @@ import {
   struct,
   tuple,
   u64,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 import {
   BasePluginAuthority,
   BasePluginAuthorityArgs,

@@ -6,7 +6,7 @@
  * @see https://github.com/metaplex-foundation/kinobi
  */
 
-import { Option, OptionOrNullable, PublicKey } from '@metaplex-foundation/umi';
+import { Option, OptionOrNullable, PublicKey } from '@trezoaplex-foundation/umi';
 import {
   Serializer,
   array,
@@ -14,7 +14,7 @@ import {
   publicKey as publicKeySerializer,
   struct,
   tuple,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 import {
   BaseExtraAccount,
   BaseExtraAccountArgs,

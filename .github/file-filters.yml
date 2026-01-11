@@ -11,12 +11,12 @@ program_common: &program_common
   - ".github/file-filters.yml"
   - ".github/.env"
 
-mpl_core_program: &mpl_core_program
+tpl_core_program: &tpl_core_program
   - *program_common
-  - "programs/mpl-core/**"
+  - "programs/tpl-core/**"
 
 programs: &programs
-  - *mpl_core_program
+  - *tpl_core_program
 
 # Clients.
 

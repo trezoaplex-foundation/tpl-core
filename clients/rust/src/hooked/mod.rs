@@ -8,12 +8,12 @@ pub mod asset;
 
 pub mod collection;
 
-#[cfg(feature = "anchor")]
+#[cfg(feature = "trezoa")]
 use anchor_lang::prelude::{
     AnchorDeserialize as CrateDeserialize, AnchorSerialize as CrateSerialize,
 };
 use base64::prelude::*;
-#[cfg(not(feature = "anchor"))]
+#[cfg(not(feature = "trezoa"))]
 use borsh::{BorshDeserialize as CrateDeserialize, BorshSerialize as CrateSerialize};
 use modular_bitfield::{bitfield, specifiers::B29};
 use num_traits::FromPrimitive;
@@ -27,9 +27,9 @@ use crate::{
         ExternalPluginAdapterType, Key, Plugin, PluginType, RegistryRecord, UpdateAuthority,
     },
 };
-use solana_program::account_info::AccountInfo;
+use trezoa_program::account_info::AccountInfo;
 
-impl From<&Plugin> for PluginType {
+itpl From<&Plugin> for PluginType {
     fn from(plugin: &Plugin) -> Self {
         match plugin {
             Plugin::AddBlocker(_) => PluginType::AddBlocker,
@@ -54,7 +54,7 @@ impl From<&Plugin> for PluginType {
     }
 }
 
-impl BaseAssetV1 {
+itpl BaseAssetV1 {
     /// The base length of the asset account with an empty name and uri and no seq.
     const BASE_LEN: usize = 1 // Key
                             + 32 // Owner
@@ -64,7 +64,7 @@ impl BaseAssetV1 {
                             + 1; // Seq option
 }
 
-impl BaseCollectionV1 {
+itpl BaseCollectionV1 {
     /// The base length of the collection account with an empty name and uri.
     const BASE_LEN: usize = 1 // Key
                             + 32 // Update Authority
@@ -74,62 +74,62 @@ impl BaseCollectionV1 {
                             + 4; // current_size
 }
 
-/// Anchor implementations that enable using `Account<BaseAssetV1>` and `Account<BaseCollectionV1>`
-/// in Anchor programs.
-#[cfg(feature = "anchor")]
-mod anchor_impl {
+/// Trezoa itplementations that enable using `Account<BaseAssetV1>` and `Account<BaseCollectionV1>`
+/// in Trezoa programs.
+#[cfg(feature = "trezoa")]
+mod anchor_itpl {
     use super::*;
     use anchor_lang::{
         prelude::{Owner, Pubkey},
         AccountDeserialize, AccountSerialize, Discriminator,
     };
 
-    impl AccountDeserialize for BaseAssetV1 {
+    itpl AccountDeserialize for BaseAssetV1 {
         fn try_deserialize_unchecked(buf: &mut &[u8]) -> anchor_lang::Result<Self> {
             let base_asset = Self::from_bytes(buf)?;
             Ok(base_asset)
         }
     }
 
-    // Not used as an Anchor program using Account<BaseAssetV1> would not have permission to
-    // reserialize the account as it's owned by mpl-core.
-    impl AccountSerialize for BaseAssetV1 {}
+    // Not used as an Trezoa program using Account<BaseAssetV1> would not have permission to
+    // reserialize the account as it's owned by tpl-core.
+    itpl AccountSerialize for BaseAssetV1 {}
 
-    // Not used but needed for Anchor.
-    impl Discriminator for BaseAssetV1 {
+    // Not used but needed for Trezoa.
+    itpl Discriminator for BaseAssetV1 {
         const DISCRIMINATOR: &'static [u8] = &[Key::AssetV1 as u8];
     }
 
-    impl Owner for BaseAssetV1 {
+    itpl Owner for BaseAssetV1 {
         fn owner() -> Pubkey {
             crate::ID
         }
     }
 
-    impl AccountDeserialize for BaseCollectionV1 {
+    itpl AccountDeserialize for BaseCollectionV1 {
         fn try_deserialize_unchecked(buf: &mut &[u8]) -> anchor_lang::Result<Self> {
             let base_asset = Self::from_bytes(buf)?;
             Ok(base_asset)
         }
     }
 
-    // Not used as an Anchor program using Account<BaseCollectionV1> would not have permission to
-    // reserialize the account as it's owned by mpl-core.
-    impl AccountSerialize for BaseCollectionV1 {}
+    // Not used as an Trezoa program using Account<BaseCollectionV1> would not have permission to
+    // reserialize the account as it's owned by tpl-core.
+    itpl AccountSerialize for BaseCollectionV1 {}
 
-    // Not used but needed for Anchor.
-    impl Discriminator for BaseCollectionV1 {
+    // Not used but needed for Trezoa.
+    itpl Discriminator for BaseCollectionV1 {
         const DISCRIMINATOR: &'static [u8] = &[Key::CollectionV1 as u8];
     }
 
-    impl Owner for BaseCollectionV1 {
+    itpl Owner for BaseCollectionV1 {
         fn owner() -> Pubkey {
             crate::ID
         }
     }
 }
 
-impl DataBlob for BaseAssetV1 {
+itpl DataBlob for BaseAssetV1 {
     fn len(&self) -> usize {
         let mut size = BaseAssetV1::BASE_LEN + self.name.len() + self.uri.len();
 
@@ -145,37 +145,37 @@ impl DataBlob for BaseAssetV1 {
     }
 }
 
-impl SolanaAccount for BaseAssetV1 {
+itpl TrezoaAccount for BaseAssetV1 {
     fn key() -> Key {
         Key::AssetV1
     }
 }
 
-impl DataBlob for BaseCollectionV1 {
+itpl DataBlob for BaseCollectionV1 {
     fn len(&self) -> usize {
         Self::BASE_LEN + self.name.len() + self.uri.len()
     }
 }
 
-impl SolanaAccount for BaseCollectionV1 {
+itpl TrezoaAccount for BaseCollectionV1 {
     fn key() -> Key {
         Key::CollectionV1
     }
 }
 
-impl SolanaAccount for PluginRegistryV1 {
+itpl TrezoaAccount for PluginRegistryV1 {
     fn key() -> Key {
         Key::PluginRegistryV1
     }
 }
 
-impl SolanaAccount for PluginHeaderV1 {
+itpl TrezoaAccount for PluginHeaderV1 {
     fn key() -> Key {
         Key::PluginHeaderV1
     }
 }
 
-impl Key {
+itpl Key {
     /// Load the one byte key from a slice of data at the given offset.
     pub fn from_slice(data: &[u8], offset: usize) -> Result<Self, std::io::Error> {
         let key_byte = *data.get(offset).ok_or_else(|| {
@@ -207,8 +207,8 @@ pub trait DataBlob: CrateSerialize + CrateDeserialize {
     fn len(&self) -> usize;
 }
 
-/// A trait for Solana accounts.
-pub trait SolanaAccount: CrateSerialize + CrateDeserialize {
+/// A trait for Trezoa accounts.
+pub trait TrezoaAccount: CrateSerialize + CrateDeserialize {
     /// Get the discriminator key for the account.
     fn key() -> Key;
 
@@ -233,7 +233,7 @@ pub trait SolanaAccount: CrateSerialize + CrateDeserialize {
     }
 }
 
-impl RegistryRecord {
+itpl RegistryRecord {
     /// Associated function for sorting `RegistryRecords` by offset.
     pub fn compare_offsets(a: &RegistryRecord, b: &RegistryRecord) -> Ordering {
         a.offset.cmp(&b.offset)
@@ -250,13 +250,13 @@ pub struct ExternalCheckResultBits {
     pub empty_bits: B29,
 }
 
-impl From<ExternalCheckResult> for ExternalCheckResultBits {
+itpl From<ExternalCheckResult> for ExternalCheckResultBits {
     fn from(check_result: ExternalCheckResult) -> Self {
         ExternalCheckResultBits::from_bytes(check_result.flags.to_le_bytes())
     }
 }
 
-impl From<ExternalCheckResultBits> for ExternalCheckResult {
+itpl From<ExternalCheckResultBits> for ExternalCheckResult {
     fn from(bits: ExternalCheckResultBits) -> Self {
         ExternalCheckResult {
             flags: u32::from_le_bytes(bits.into_bytes()),
@@ -264,7 +264,7 @@ impl From<ExternalCheckResultBits> for ExternalCheckResult {
     }
 }
 
-impl From<&ExternalPluginAdapterKey> for ExternalPluginAdapterType {
+itpl From<&ExternalPluginAdapterKey> for ExternalPluginAdapterType {
     fn from(key: &ExternalPluginAdapterKey) -> Self {
         match key {
             ExternalPluginAdapterKey::LifecycleHook(_) => ExternalPluginAdapterType::LifecycleHook,

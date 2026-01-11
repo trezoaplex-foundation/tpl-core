@@ -1,4 +1,4 @@
-import { Context } from '@metaplex-foundation/umi';
+import { Context } from '@trezoaplex-foundation/umi';
 import { CollectionV1, burnV1, AssetV1 } from '../generated';
 import { findExtraAccounts } from '../plugins';
 import { deriveExternalPluginAdapters } from '../helpers';

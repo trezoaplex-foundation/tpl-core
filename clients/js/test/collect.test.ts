@@ -3,12 +3,12 @@ import {
   Umi,
   generateSigner,
   publicKey,
-  sol,
+  trz,
   subtractAmounts,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import test from 'ava';
 
-import { fixedAccountInit } from '@metaplex-foundation/mpl-core-oracle-example';
+import { fixedAccountInit } from '@trezoaplex-foundation/tpl-core-oracle-exatple';
 import {
   CheckResult,
   ExternalPluginAdapterSchema,
@@ -31,8 +31,8 @@ const recipient2 = publicKey('MmHsqX4LxTfifxoH8BVRLUKrwDn1LPCac6YcCZTHhwt');
 
 test.before(async () => {
   const umi = await createUmi();
-  await umi.rpc.airdrop(recipient1, sol(0.1));
-  await umi.rpc.airdrop(recipient2, sol(0.1));
+  await umi.rpc.airdrop(recipient1, trz(0.1));
+  await umi.rpc.airdrop(recipient2, trz(0.1));
 });
 
 const hasCollectAmount = async (umi: Umi, address: PublicKey) => {
@@ -40,7 +40,7 @@ const hasCollectAmount = async (umi: Umi, address: PublicKey) => {
   if (account.exists) {
     const rent = await umi.rpc.getRent(account.data.length);
     const diff = account.lamports.basisPoints - rent.basisPoints;
-    return diff === sol(0.0015).basisPoints;
+    return diff === trz(0.0015).basisPoints;
   }
   return false;
 };
@@ -167,8 +167,8 @@ test.serial('it can collect', async (t) => {
   const balEnd1 = await umi.rpc.getBalance(recipient1);
   const balEnd2 = await umi.rpc.getBalance(recipient2);
   t.is(await hasCollectAmount(umi, asset.publicKey), false);
-  t.deepEqual(subtractAmounts(balEnd1, balStart1), sol(0.0015 / 2));
-  t.deepEqual(subtractAmounts(balEnd2, balStart2), sol(0.0015 / 2));
+  t.deepEqual(subtractAmounts(balEnd1, balStart1), trz(0.0015 / 2));
+  t.deepEqual(subtractAmounts(balEnd2, balStart2), trz(0.0015 / 2));
 });
 
 test.serial('it can collect from an asset with plugins', async (t) => {
@@ -202,8 +202,8 @@ test.serial('it can collect from an asset with plugins', async (t) => {
   const balEnd1 = await umi.rpc.getBalance(recipient1);
   const balEnd2 = await umi.rpc.getBalance(recipient2);
   t.is(await hasCollectAmount(umi, asset.publicKey), false);
-  t.deepEqual(subtractAmounts(balEnd1, balStart1), sol(0.0015 / 2));
-  t.deepEqual(subtractAmounts(balEnd2, balStart2), sol(0.0015 / 2));
+  t.deepEqual(subtractAmounts(balEnd1, balStart1), trz(0.0015 / 2));
+  t.deepEqual(subtractAmounts(balEnd2, balStart2), trz(0.0015 / 2));
 
   t.assert(await assertNoExcessRent(umi, asset.publicKey), 'Excess rent found');
 });
@@ -212,7 +212,7 @@ test.serial('it can collect from an asset with external plugins', async (t) => {
   const umi = await createUmi();
   const account = generateSigner(umi);
 
-  // write to example program oracle account
+  // write to exatple program oracle account
   await fixedAccountInit(umi, {
     account,
     signer: umi.identity,
@@ -246,7 +246,7 @@ test.serial('it can collect from an asset with external plugins', async (t) => {
       {
         type: 'Oracle',
         resultsOffset: {
-          type: 'Anchor',
+          type: 'Trezoa',
         },
         lifecycleChecks: {
           create: [CheckResult.CAN_REJECT],
@@ -268,8 +268,8 @@ test.serial('it can collect from an asset with external plugins', async (t) => {
   const balEnd1 = await umi.rpc.getBalance(recipient1);
   const balEnd2 = await umi.rpc.getBalance(recipient2);
   t.is(await hasCollectAmount(umi, asset.publicKey), false);
-  t.deepEqual(subtractAmounts(balEnd1, balStart1), sol(0.0015 / 2));
-  t.deepEqual(subtractAmounts(balEnd2, balStart2), sol(0.0015 / 2));
+  t.deepEqual(subtractAmounts(balEnd1, balStart1), trz(0.0015 / 2));
+  t.deepEqual(subtractAmounts(balEnd2, balStart2), trz(0.0015 / 2));
 
   t.assert(await assertNoExcessRent(umi, asset.publicKey), 'Excess rent found');
 });
@@ -313,8 +313,8 @@ test.serial(
     const balEnd1 = await umi.rpc.getBalance(recipient1);
     const balEnd2 = await umi.rpc.getBalance(recipient2);
     t.is(await hasCollectAmount(umi, asset.publicKey), false);
-    t.deepEqual(subtractAmounts(balEnd1, balStart1), sol(0.0015 / 2));
-    t.deepEqual(subtractAmounts(balEnd2, balStart2), sol(0.0015 / 2));
+    t.deepEqual(subtractAmounts(balEnd1, balStart1), trz(0.0015 / 2));
+    t.deepEqual(subtractAmounts(balEnd2, balStart2), trz(0.0015 / 2));
 
     t.assert(
       await assertNoExcessRent(umi, asset.publicKey),
@@ -329,7 +329,7 @@ test.serial(
     const umi = await createUmi();
     const account = generateSigner(umi);
 
-    // write to example program oracle account
+    // write to exatple program oracle account
     await fixedAccountInit(umi, {
       account,
       signer: umi.identity,
@@ -364,7 +364,7 @@ test.serial(
         {
           type: 'Oracle',
           resultsOffset: {
-            type: 'Anchor',
+            type: 'Trezoa',
           },
           lifecycleChecks: {
             create: [CheckResult.CAN_REJECT],
@@ -391,8 +391,8 @@ test.serial(
     const balEnd1 = await umi.rpc.getBalance(recipient1);
     const balEnd2 = await umi.rpc.getBalance(recipient2);
     t.is(await hasCollectAmount(umi, asset.publicKey), false);
-    t.deepEqual(subtractAmounts(balEnd1, balStart1), sol(0.0015 / 2));
-    t.deepEqual(subtractAmounts(balEnd2, balStart2), sol(0.0015 / 2));
+    t.deepEqual(subtractAmounts(balEnd1, balStart1), trz(0.0015 / 2));
+    t.deepEqual(subtractAmounts(balEnd2, balStart2), trz(0.0015 / 2));
 
     t.assert(
       await assertNoExcessRent(umi, asset.publicKey),
@@ -421,8 +421,8 @@ test.serial('it can collect burned asset', async (t) => {
   const balEnd1 = await umi.rpc.getBalance(recipient1);
   const balEnd2 = await umi.rpc.getBalance(recipient2);
   t.is(await hasCollectAmount(umi, asset.publicKey), false);
-  t.deepEqual(subtractAmounts(balEnd1, balStart1), sol(0.0015 / 2));
-  t.deepEqual(subtractAmounts(balEnd2, balStart2), sol(0.0015 / 2));
+  t.deepEqual(subtractAmounts(balEnd1, balStart1), trz(0.0015 / 2));
+  t.deepEqual(subtractAmounts(balEnd2, balStart2), trz(0.0015 / 2));
 
   t.assert(await assertNoExcessRent(umi, asset.publicKey), 'Excess rent found');
 });
@@ -444,8 +444,8 @@ test.serial(
     const balMid1 = await umi.rpc.getBalance(recipient1);
     const balMid2 = await umi.rpc.getBalance(recipient2);
     t.is(await hasCollectAmount(umi, asset.publicKey), false);
-    t.deepEqual(subtractAmounts(balMid1, balStart1), sol(0.0015 / 2));
-    t.deepEqual(subtractAmounts(balMid2, balStart2), sol(0.0015 / 2));
+    t.deepEqual(subtractAmounts(balMid1, balStart1), trz(0.0015 / 2));
+    t.deepEqual(subtractAmounts(balMid2, balStart2), trz(0.0015 / 2));
     await collect(umi, {})
       .addRemainingAccounts({
         isSigner: false,
@@ -456,8 +456,8 @@ test.serial(
     const balEnd1 = await umi.rpc.getBalance(recipient1);
     const balEnd2 = await umi.rpc.getBalance(recipient2);
     t.is(await hasCollectAmount(umi, asset.publicKey), false);
-    t.deepEqual(subtractAmounts(balEnd1, balStart1), sol(0.0015 / 2));
-    t.deepEqual(subtractAmounts(balEnd2, balStart2), sol(0.0015 / 2));
+    t.deepEqual(subtractAmounts(balEnd1, balStart1), trz(0.0015 / 2));
+    t.deepEqual(subtractAmounts(balEnd2, balStart2), trz(0.0015 / 2));
 
     t.assert(
       await assertNoExcessRent(umi, asset.publicKey),
@@ -497,8 +497,8 @@ test.serial('it can collect multiple assets at once', async (t) => {
   t.is(await hasCollectAmount(umi, asset.publicKey), false);
   t.is(await hasCollectAmount(umi, asset2.publicKey), false);
   t.is(await hasCollectAmount(umi, asset3.publicKey), false);
-  t.deepEqual(subtractAmounts(balEnd1, balStart1), sol((0.0015 / 2) * 3));
-  t.deepEqual(subtractAmounts(balEnd2, balStart2), sol((0.0015 / 2) * 3));
+  t.deepEqual(subtractAmounts(balEnd1, balStart1), trz((0.0015 / 2) * 3));
+  t.deepEqual(subtractAmounts(balEnd2, balStart2), trz((0.0015 / 2) * 3));
 
   t.assert(await assertNoExcessRent(umi, asset.publicKey), 'Excess rent found');
 });

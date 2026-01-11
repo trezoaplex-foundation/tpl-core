@@ -1,6 +1,6 @@
 import test from 'ava';
-import { generateSignerWithSol } from '@metaplex-foundation/umi-bundle-tests';
-import { Signer, Umi, generateSigner } from '@metaplex-foundation/umi';
+import { generateSignerWithSol } from '@trezoaplex-foundation/umi-bundle-tests';
+import { Signer, Umi, generateSigner } from '@trezoaplex-foundation/umi';
 import * as msgpack from '@msgpack/msgpack';
 import {
   assertAsset,
@@ -544,7 +544,7 @@ test('it can update app data with external plugin authority different than asset
   await create(umi, {
     asset,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'AppData',
@@ -559,7 +559,7 @@ test('it can update app data with external plugin authority different than asset
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -591,7 +591,7 @@ test('it can update app data with external plugin authority different than asset
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -619,7 +619,7 @@ test('it cannot update app data using update authority when different from exter
   await create(umi, {
     asset,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'AppData',
@@ -634,7 +634,7 @@ test('it cannot update app data using update authority when different from exter
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -668,7 +668,7 @@ test('it cannot update app data using update authority when different from exter
   await t.throwsAsync(result, { name: 'InvalidAuthority' });
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -696,7 +696,7 @@ test('it can update app data on collection with external plugin authority differ
   await createCollection(umi, {
     collection,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'AppData',
@@ -711,7 +711,7 @@ test('it can update app data on collection with external plugin authority differ
   }).sendAndConfirm(umi);
 
   await assertCollection(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     collection: collection.publicKey,
     updateAuthority: umi.identity.publicKey,
@@ -742,7 +742,7 @@ test('it can update app data on collection with external plugin authority differ
   }).sendAndConfirm(umi);
 
   await assertCollection(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     collection: collection.publicKey,
     updateAuthority: umi.identity.publicKey,
@@ -769,7 +769,7 @@ test('it cannot update app data on collection using update authority when differ
   await createCollection(umi, {
     collection,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'AppData',
@@ -784,7 +784,7 @@ test('it cannot update app data on collection using update authority when differ
   }).sendAndConfirm(umi);
 
   await assertCollection(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     collection: collection.publicKey,
     updateAuthority: umi.identity.publicKey,
@@ -817,7 +817,7 @@ test('it cannot update app data on collection using update authority when differ
   await t.throwsAsync(result, { name: 'InvalidAuthority' });
 
   await assertCollection(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     collection: collection.publicKey,
     updateAuthority: umi.identity.publicKey,

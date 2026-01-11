@@ -11,7 +11,7 @@ import {
   array,
   bytes,
   struct,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 
 export type HashedAssetSchema = {
   assetHash: Uint8Array;

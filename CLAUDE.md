@@ -33,7 +33,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Multi-Language Workspace Structure
 This repository contains both Rust programs and multiple client libraries:
-- **Rust Program**: `programs/mpl-core/` - The on-chain Solana program
+- **Rust Program**: `programs/tpl-core/` - The on-chain Trezoa program
 - **JavaScript Client**: `clients/js/` - Umi-compatible JS library 
 - **Rust Client**: `clients/rust/` - Rust client library
 - **Python Client**: `clients/python/` - Python client (minimal)

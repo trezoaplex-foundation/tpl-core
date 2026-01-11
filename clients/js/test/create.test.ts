@@ -1,7 +1,7 @@
-import { generateSigner, publicKey, sol } from '@metaplex-foundation/umi';
+import { generateSigner, publicKey, sol } from '@trezoaplex-foundation/umi';
 import test from 'ava';
-import { generateSignerWithSol } from '@metaplex-foundation/umi-bundle-tests';
-import { createAccount } from '@metaplex-foundation/mpl-toolbox';
+import { generateSignerWithSol } from '@trezoaplex-foundation/umi-bundle-tests';
+import { createAccount } from '@trezoaplex-foundation/tpl-toolbox';
 import { getAssetV1AccountDataSerializer } from '../src/hooked';
 import {
   AssetV1,
@@ -65,7 +65,7 @@ test.skip('it can create a new asset in ledger state', async (t) => {
     dataState: DataState.LedgerState,
     asset: assetAddress,
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
     logWrapper: publicKey('noopb9bkMVfRPU8AsbpTUg8AQkHtKwMYZiFUjNRtMmV'),
   }).sendAndConfirm(umi);
 
@@ -87,7 +87,7 @@ test.skip('it can create a new asset in ledger state', async (t) => {
       updateAuthority: { type: 'Address', address: umi.identity.publicKey },
       owner: umi.identity.publicKey,
       name: 'Test Bread',
-      uri: 'https://example.com/bread',
+      uri: 'https://exatple.com/bread',
     });
   }
 });
@@ -102,7 +102,7 @@ test('it cannot create a new asset in ledger state because it is not available',
     dataState: DataState.LedgerState,
     asset: assetAddress,
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
     logWrapper: publicKey('noopb9bkMVfRPU8AsbpTUg8AQkHtKwMYZiFUjNRtMmV'),
   }).sendAndConfirm(umi);
 
@@ -119,7 +119,7 @@ test('it can create a new asset in account state with plugins', async (t) => {
     dataState: DataState.AccountState,
     asset: assetAddress,
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
     plugins: [
       pluginAuthorityPair({
         type: 'FreezeDelegate',
@@ -133,7 +133,7 @@ test('it can create a new asset in account state with plugins', async (t) => {
     owner: umi.identity.publicKey,
     updateAuthority: { type: 'Address', address: umi.identity.publicKey },
     name: 'Test Bread',
-    uri: 'https://example.com/bread',
+    uri: 'https://exatple.com/bread',
     // pluginHeader: formPluginHeader(BigInt(120)),
     freezeDelegate: {
       authority: {
@@ -222,7 +222,7 @@ test('it cannot create a new asset if the address is not owned by the system pro
     newAccount,
     lamports: sol(0.1),
     space: 42,
-    programId: umi.programs.get('mplCore').publicKey,
+    programId: umi.programs.get('tplCore').publicKey,
   }).sendAndConfirm(umi);
 
   // The invalid system program error is expected.

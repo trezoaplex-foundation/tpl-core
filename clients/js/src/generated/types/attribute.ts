@@ -10,7 +10,7 @@ import {
   Serializer,
   string,
   struct,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 
 export type Attribute = { key: string; value: string };
 

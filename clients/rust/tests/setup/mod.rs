@@ -1,4 +1,4 @@
-use mpl_core::{
+use tpl_core::{
     instructions::{CreateCollectionV2Builder, CreateV2Builder},
     types::{
         DataState, ExternalPluginAdapter, ExternalPluginAdapterInitInfo, Key, Plugin,
@@ -6,20 +6,20 @@ use mpl_core::{
     },
     Asset, Collection,
 };
-use solana_program_test::{BanksClientError, ProgramTest, ProgramTestContext};
-use solana_sdk::{
+use trezoa_program_test::{BanksClientError, ProgramTest, ProgramTestContext};
+use trezoa_sdk::{
     pubkey::Pubkey, signature::Keypair, signer::Signer, system_instruction, system_program,
     transaction::Transaction,
 };
 
 pub fn program_test() -> ProgramTest {
-    ProgramTest::new("mpl_core_program", mpl_core::ID, None)
+    ProgramTest::new("tpl_core_program", tpl_core::ID, None)
 }
 
 const DEFAULT_ASSET_NAME: &str = "Test Asset";
-const DEFAULT_ASSET_URI: &str = "https://example.com/asset";
+const DEFAULT_ASSET_URI: &str = "https://exatple.com/asset";
 const DEFAULT_COLLECTION_NAME: &str = "Test Collection";
-const DEFAULT_COLLECTION_URI: &str = "https://example.com/collection";
+const DEFAULT_COLLECTION_URI: &str = "https://exatple.com/collection";
 
 #[derive(Debug)]
 pub struct CreateAssetHelperArgs<'a> {
@@ -384,10 +384,10 @@ pub async fn airdrop(
 macro_rules! assert_custom_instruction_error {
     ($ix:expr, $error:expr, $matcher:pat) => {
         match $error {
-            solana_program_test::BanksClientError::TransactionError(
-                solana_sdk::transaction::TransactionError::InstructionError(
+            trezoa_program_test::BanksClientError::TransactionError(
+                trezoa_sdk::transaction::TransactionError::InstructionError(
                     $ix,
-                    solana_sdk::instruction::InstructionError::Custom(x),
+                    trezoa_sdk::instruction::InstructionError::Custom(x),
                 ),
             ) => match num_traits::FromPrimitive::from_i32(x as i32) {
                 Some($matcher) => assert!(true),

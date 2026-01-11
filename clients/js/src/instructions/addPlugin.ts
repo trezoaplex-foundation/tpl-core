@@ -1,4 +1,4 @@
-import { Context } from '@metaplex-foundation/umi';
+import { Context } from '@trezoaplex-foundation/umi';
 import { addPluginV1, addExternalPluginAdapterV1 } from '../generated';
 import {
   AssetAddablePluginAuthorityPairArgsV2,

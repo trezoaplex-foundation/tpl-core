@@ -1,5 +1,5 @@
 import test from 'ava';
-import { generateSigner } from '@metaplex-foundation/umi';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 import { assertAsset, createAsset, createUmi } from '../_setupRaw';
 import {
   pluginAuthorityPair,

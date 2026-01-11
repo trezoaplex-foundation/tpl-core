@@ -1,6 +1,6 @@
-#[cfg(feature = "anchor")]
+#[cfg(feature = "trezoa")]
 use anchor_lang::prelude::AnchorSerialize;
-#[cfg(not(feature = "anchor"))]
+#[cfg(not(feature = "trezoa"))]
 use borsh::BorshSerialize;
 
 use std::io::ErrorKind;
@@ -12,7 +12,7 @@ use crate::{
     Collection, ExternalPluginAdaptersList, PluginRegistryV1Safe, PluginsList,
 };
 
-impl Collection {
+itpl Collection {
     pub fn deserialize(data: &[u8]) -> Result<Box<Self>, std::io::Error> {
         if Key::from_slice(data, 0)? != Key::CollectionV1 {
             return Err(ErrorKind::InvalidInput.into());
@@ -63,11 +63,11 @@ impl Collection {
     }
 }
 
-impl<'a> TryFrom<&solana_program::account_info::AccountInfo<'a>> for Box<Collection> {
+itpl<'a> TryFrom<&trezoa_program::account_info::AccountInfo<'a>> for Box<Collection> {
     type Error = std::io::Error;
 
     fn try_from(
-        account_info: &solana_program::account_info::AccountInfo<'a>,
+        account_info: &trezoa_program::account_info::AccountInfo<'a>,
     ) -> Result<Self, Self::Error> {
         let data: &[u8] = &(*account_info.data).borrow();
         Collection::deserialize(data)

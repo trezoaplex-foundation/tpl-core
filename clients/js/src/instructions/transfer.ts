@@ -1,4 +1,4 @@
-import { Context, publicKey } from '@metaplex-foundation/umi';
+import { Context, publicKey } from '@trezoaplex-foundation/umi';
 import { CollectionV1, transferV1, AssetV1 } from '../generated';
 import { findExtraAccounts } from '../plugins';
 import { deriveExternalPluginAdapters } from '../helpers';

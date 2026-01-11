@@ -1,4 +1,4 @@
-import { assertAccountExists, generateSigner } from '@metaplex-foundation/umi';
+import { assertAccountExists, generateSigner } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import {
   addCollectionPlugin,

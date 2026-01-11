@@ -4,7 +4,7 @@ import {
   PublicKey,
   Signer,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   AssetV1,
   CollectionV1,

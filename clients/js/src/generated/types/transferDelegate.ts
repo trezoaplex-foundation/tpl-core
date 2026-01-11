@@ -6,7 +6,7 @@
  * @see https://github.com/metaplex-foundation/kinobi
  */
 
-import { Serializer, struct } from '@metaplex-foundation/umi/serializers';
+import { Serializer, struct } from '@trezoaplex-foundation/umi/serializers';
 
 export type TransferDelegate = {};
 

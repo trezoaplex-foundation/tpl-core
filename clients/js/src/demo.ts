@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { createUmi, generateSigner } from '@metaplex-foundation/umi';
+import { createUmi, generateSigner } from '@trezoaplex-foundation/umi';
 import {
   create,
   createCollection,
@@ -14,7 +14,7 @@ import {
   revokePluginAuthority,
 } from './index';
 
-const example = async () => {
+const exatple = async () => {
   const umi = await createUmi();
 
   // Create an asset
@@ -23,7 +23,7 @@ const example = async () => {
 
   await create(umi, {
     name: 'Test Asset',
-    uri: 'https://example.com/asset.json',
+    uri: 'https://exatple.com/asset.json',
     asset: assetAddress,
     owner: owner.publicKey, // optional, will default to payer
   }).sendAndConfirm(umi);
@@ -36,7 +36,7 @@ const example = async () => {
   const collectionAddress = generateSigner(umi);
   await createCollection(umi, {
     name: 'Test Collection',
-    uri: 'https://example.com/collection.json',
+    uri: 'https://exatple.com/collection.json',
     collection: collectionAddress,
     updateAuthority: collectionUpdateAuthority.publicKey, // optional, defaults to payer
   }).sendAndConfirm(umi);
@@ -47,7 +47,7 @@ const example = async () => {
   // Create an asset in a collection, the authority must be the updateAuthority of the collection
   await create(umi, {
     name: 'Test Asset',
-    uri: 'https://example.com/asset.json',
+    uri: 'https://exatple.com/asset.json',
     asset: assetAddress,
     collection,
     authority: collectionUpdateAuthority, // optional, defaults to payer
@@ -86,7 +86,7 @@ const example = async () => {
   // Coming soon
 };
 
-const advancedExamples = async () => {
+const advancedExatples = async () => {
   const umi = await createUmi();
 
   // Freezing an asset
@@ -127,7 +127,7 @@ const advancedExamples = async () => {
 
   await createCollection(umi, {
     name: 'Test Collection',
-    uri: 'https://example.com/collection.json',
+    uri: 'https://exatple.com/collection.json',
     collection: collectionAddress,
     plugins: [
       {
@@ -152,7 +152,7 @@ const advancedExamples = async () => {
   // Assets in a collection will inherit the collection's authority-managed plugins, in this case the royalties plugin
   await create(umi, {
     name: 'Test Asset',
-    uri: 'https://example.com/asset.json',
+    uri: 'https://exatple.com/asset.json',
     asset: assetAddress,
     collection: await fetchCollectionV1(umi, collectionAddress.publicKey),
   }).sendAndConfirm(umi);

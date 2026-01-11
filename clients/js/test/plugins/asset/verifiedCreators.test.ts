@@ -1,7 +1,7 @@
 import test from 'ava';
 
-import { generateSigner } from '@metaplex-foundation/umi';
-import { generateSignerWithSol } from '@metaplex-foundation/umi-bundle-tests';
+import { generateSigner } from '@trezoaplex-foundation/umi';
+import { generateSignerWithSol } from '@trezoaplex-foundation/umi-bundle-tests';
 import { DEFAULT_ASSET, assertAsset, createUmi } from '../../_setupRaw';
 import { createAsset } from '../../_setupSdk';
 import { addPlugin, updatePlugin } from '../../../src';

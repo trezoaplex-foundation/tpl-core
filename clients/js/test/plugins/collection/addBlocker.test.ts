@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import { generateSigner } from '@metaplex-foundation/umi';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 import {
   DEFAULT_COLLECTION,
   assertCollection,

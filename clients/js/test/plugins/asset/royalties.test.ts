@@ -1,11 +1,11 @@
-import { generateSigner } from '@metaplex-foundation/umi';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import {
   SPL_SYSTEM_PROGRAM_ID,
   SPL_TOKEN_PROGRAM_ID,
-} from '@metaplex-foundation/mpl-toolbox';
+} from '@trezoaplex-foundation/tpl-toolbox';
 import {
-  MPL_CORE_PROGRAM_ID,
+  TPL_CORE_PROGRAM_ID,
   addPluginV1,
   createPlugin,
   pluginAuthorityPair,
@@ -138,7 +138,7 @@ test('it can transfer an asset with royalties to an allowlisted program address'
           basisPoints: 5,
           creators: [{ address: umi.identity.publicKey, percentage: 100 }],
           ruleSet: ruleSet('ProgramAllowList', [
-            [SPL_SYSTEM_PROGRAM_ID, MPL_CORE_PROGRAM_ID],
+            [SPL_SYSTEM_PROGRAM_ID, TPL_CORE_PROGRAM_ID],
           ]),
         },
       }),
@@ -161,7 +161,7 @@ test('it can transfer an asset with royalties to an allowlisted program address'
       basisPoints: 5,
       creators: [{ address: umi.identity.publicKey, percentage: 100 }],
       ruleSet: ruleSet('ProgramAllowList', [
-        [SPL_SYSTEM_PROGRAM_ID, MPL_CORE_PROGRAM_ID],
+        [SPL_SYSTEM_PROGRAM_ID, TPL_CORE_PROGRAM_ID],
       ]),
     },
   });
@@ -191,7 +191,7 @@ test('it can transfer an asset with collection royalties to an allowlisted progr
             basisPoints: 5,
             creators: [{ address: umi.identity.publicKey, percentage: 100 }],
             ruleSet: ruleSet('ProgramAllowList', [
-              [SPL_SYSTEM_PROGRAM_ID, MPL_CORE_PROGRAM_ID],
+              [SPL_SYSTEM_PROGRAM_ID, TPL_CORE_PROGRAM_ID],
             ]),
           },
         }),
@@ -220,7 +220,7 @@ test('it can transfer an asset with collection royalties to an allowlisted progr
       basisPoints: 5,
       creators: [{ address: umi.identity.publicKey, percentage: 100 }],
       ruleSet: ruleSet('ProgramAllowList', [
-        [SPL_SYSTEM_PROGRAM_ID, MPL_CORE_PROGRAM_ID],
+        [SPL_SYSTEM_PROGRAM_ID, TPL_CORE_PROGRAM_ID],
       ]),
     },
   });
@@ -465,7 +465,7 @@ test('it cannot transfer an asset with royalties to a denylisted program', async
         data: {
           basisPoints: 5,
           creators: [{ address: umi.identity.publicKey, percentage: 100 }],
-          ruleSet: ruleSet('ProgramDenyList', [[MPL_CORE_PROGRAM_ID]]),
+          ruleSet: ruleSet('ProgramDenyList', [[TPL_CORE_PROGRAM_ID]]),
         },
       }),
     ],
@@ -499,7 +499,7 @@ test('it cannot transfer an asset with collection royalties to a program address
           data: {
             basisPoints: 5,
             creators: [{ address: umi.identity.publicKey, percentage: 100 }],
-            ruleSet: ruleSet('ProgramDenyList', [[MPL_CORE_PROGRAM_ID]]),
+            ruleSet: ruleSet('ProgramDenyList', [[TPL_CORE_PROGRAM_ID]]),
           },
         }),
       ],
@@ -526,7 +526,7 @@ test('it cannot transfer an asset with collection royalties to a program address
       },
       basisPoints: 5,
       creators: [{ address: umi.identity.publicKey, percentage: 100 }],
-      ruleSet: ruleSet('ProgramDenyList', [[MPL_CORE_PROGRAM_ID]]),
+      ruleSet: ruleSet('ProgramDenyList', [[TPL_CORE_PROGRAM_ID]]),
     },
   });
 

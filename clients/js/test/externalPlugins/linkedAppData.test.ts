@@ -1,6 +1,6 @@
 import test from 'ava';
-import { generateSignerWithSol } from '@metaplex-foundation/umi-bundle-tests';
-import { Signer, Umi, generateSigner } from '@metaplex-foundation/umi';
+import { generateSignerWithSol } from '@trezoaplex-foundation/umi-bundle-tests';
+import { Signer, Umi, generateSigner } from '@trezoaplex-foundation/umi';
 import * as msgpack from '@msgpack/msgpack';
 import {
   assertAsset,
@@ -715,7 +715,7 @@ test('it cannot create an asset with linked app data', async (t) => {
   const result = create(umi, {
     asset,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'LinkedAppData',
@@ -739,11 +739,11 @@ test('it cannot add linked app data to an asset', async (t) => {
   await create(umi, {
     asset,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -770,7 +770,7 @@ test('it cannot add linked app data to an asset', async (t) => {
   await t.throwsAsync(result, { name: 'InvalidPluginAdapterTarget' });
 
   await assertAsset(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     owner: umi.identity.publicKey,
     asset: asset.publicKey,
@@ -788,7 +788,7 @@ test('it can update linked app data on collection with external plugin authority
   await createCollection(umi, {
     collection,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'LinkedAppData',
@@ -803,7 +803,7 @@ test('it can update linked app data on collection with external plugin authority
   }).sendAndConfirm(umi);
 
   await assertCollection(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     collection: collection.publicKey,
     updateAuthority: umi.identity.publicKey,
@@ -834,7 +834,7 @@ test('it can update linked app data on collection with external plugin authority
   }).sendAndConfirm(umi);
 
   await assertCollection(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     collection: collection.publicKey,
     updateAuthority: umi.identity.publicKey,
@@ -861,7 +861,7 @@ test('it cannot update linked app data on collection using update authority when
   await createCollection(umi, {
     collection,
     name: 'Test name',
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     plugins: [
       {
         type: 'LinkedAppData',
@@ -876,7 +876,7 @@ test('it cannot update linked app data on collection using update authority when
   }).sendAndConfirm(umi);
 
   await assertCollection(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     collection: collection.publicKey,
     updateAuthority: umi.identity.publicKey,
@@ -909,7 +909,7 @@ test('it cannot update linked app data on collection using update authority when
   await t.throwsAsync(result, { name: 'InvalidAuthority' });
 
   await assertCollection(t, umi, {
-    uri: 'https://example.com',
+    uri: 'https://exatple.com',
     name: 'Test name',
     collection: collection.publicKey,
     updateAuthority: umi.identity.publicKey,

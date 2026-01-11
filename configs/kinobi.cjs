@@ -1,5 +1,5 @@
 const path = require("path");
-const k = require("@metaplex-foundation/kinobi");
+const k = require("@trezoaplex-foundation/kinobi");
 
 // Paths.
 const clientDir = path.join(__dirname, "..", "clients");

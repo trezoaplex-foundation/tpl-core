@@ -16,7 +16,7 @@ cd $(dirname $(dirname $(dirname $SCRIPT_DIR)))
 OUTPUT=$1
 
 # oracle example program is only deployed to devnet
-RPC="https://api.devnet.solana.com"
+RPC="https://api.devnet.trezoa.com"
 
 if [ -z "$OUTPUT" ]; then
     echo "missing output directory"
@@ -40,10 +40,10 @@ copy_from_chain() {
 
     case "$ACCOUNT_TYPE" in
         "bin")
-            solana account -u $RPC ${EXTERNAL_ID[$i]} -o ${OUTPUT}/$2$1 > /dev/null
+            trezoa account -u $RPC ${EXTERNAL_ID[$i]} -o ${OUTPUT}/$2$1 > /dev/null
             ;;
         "so")
-            solana program dump -u $RPC ${EXTERNAL_ID[$i]} ${OUTPUT}/$2$1 > /dev/null
+            trezoa program dump -u $RPC ${EXTERNAL_ID[$i]} ${OUTPUT}/$2$1 > /dev/null
             ;;
         *)
             echo $(RED "[  ERROR  ] unknown account type for '$1'")

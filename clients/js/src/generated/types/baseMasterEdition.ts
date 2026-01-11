@@ -6,14 +6,14 @@
  * @see https://github.com/metaplex-foundation/kinobi
  */
 
-import { Option, OptionOrNullable } from '@metaplex-foundation/umi';
+import { Option, OptionOrNullable } from '@trezoaplex-foundation/umi';
 import {
   Serializer,
   option,
   string,
   struct,
   u32,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 
 export type BaseMasterEdition = {
   maxSupply: Option<number>;

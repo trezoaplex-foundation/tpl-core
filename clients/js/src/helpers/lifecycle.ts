@@ -1,4 +1,4 @@
-import { Context, PublicKey } from '@metaplex-foundation/umi';
+import { Context, PublicKey } from '@trezoaplex-foundation/umi';
 import {
   AssetV1,
   CollectionV1,

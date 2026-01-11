@@ -10,7 +10,7 @@ import {
   Serializer,
   array,
   struct,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 import { Attribute, AttributeArgs, getAttributeSerializer } from '.';
 
 export type Attributes = { attributeList: Array<Attribute> };

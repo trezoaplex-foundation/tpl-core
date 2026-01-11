@@ -1,4 +1,4 @@
-import { PublicKey } from '@metaplex-foundation/umi';
+import { PublicKey } from '@trezoaplex-foundation/umi';
 import { BaseSeed } from '../generated';
 import { RenameToType } from '../utils';
 

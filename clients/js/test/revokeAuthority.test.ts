@@ -1,6 +1,6 @@
-import { generateSigner } from '@metaplex-foundation/umi';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 import test from 'ava';
-import { generateSignerWithSol } from '@metaplex-foundation/umi-bundle-tests';
+import { generateSignerWithSol } from '@trezoaplex-foundation/umi-bundle-tests';
 import {
   PluginType,
   approvePluginAuthorityV1,

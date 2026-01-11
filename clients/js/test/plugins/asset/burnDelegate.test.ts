@@ -1,4 +1,4 @@
-import { generateSigner } from '@metaplex-foundation/umi';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import { addPlugin, revokePluginAuthority, burn } from '../../../src';
 import {

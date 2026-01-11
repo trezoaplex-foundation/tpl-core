@@ -6,7 +6,7 @@
  * @see https://github.com/metaplex-foundation/kinobi
  */
 
-import { Serializer, bool, struct } from '@metaplex-foundation/umi/serializers';
+import { Serializer, bool, struct } from '@trezoaplex-foundation/umi/serializers';
 
 export type PermanentFreezeExecute = { frozen: boolean };
 

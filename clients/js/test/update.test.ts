@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import { generateSigner } from '@metaplex-foundation/umi';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 import {
   updateV1,
   pluginAuthorityPair,
@@ -24,7 +24,7 @@ test('it can update an asset to be larger', async (t) => {
   await updateV1(umi, {
     asset: asset.publicKey,
     newName: 'Test Bread 2',
-    newUri: 'https://example.com/bread2',
+    newUri: 'https://exatple.com/bread2',
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
@@ -32,7 +32,7 @@ test('it can update an asset to be larger', async (t) => {
     owner: umi.identity.publicKey,
     updateAuthority: { type: 'Address', address: umi.identity.publicKey },
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
   });
 });
 
@@ -49,7 +49,7 @@ test('it cannot update an asset using asset as authority', async (t) => {
   const result = updateV1(umi, {
     asset: asset.publicKey,
     newName: 'Test Bread 2',
-    newUri: 'https://example.com/bread2',
+    newUri: 'https://exatple.com/bread2',
     authority: myAsset,
   }).sendAndConfirm(umi);
 
@@ -97,7 +97,7 @@ test('it can update an asset with plugins to be larger', async (t) => {
 
   // const asset = await createAsset(umi, {
   //   name: 'Test Bread',
-  //   uri: 'https://example.com/bread',
+  //   uri: 'https://exatple.com/bread',
   //   plugins: [{
   //     plugin: createPlugin({ type: 'Freeze', data: { frozen: true }}),
   //     authority: null,
@@ -107,7 +107,7 @@ test('it can update an asset with plugins to be larger', async (t) => {
   await updateV1(umi, {
     asset: asset.publicKey,
     newName: 'Test Bread 2',
-    newUri: 'https://example.com/bread2',
+    newUri: 'https://exatple.com/bread2',
   }).sendAndConfirm(umi);
 
   await assertAsset(t, umi, {
@@ -115,7 +115,7 @@ test('it can update an asset with plugins to be larger', async (t) => {
     owner: umi.identity.publicKey,
     updateAuthority: { type: 'Address', address: umi.identity.publicKey },
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
     freezeDelegate: {
       authority: {
         type: 'Owner',
@@ -130,7 +130,7 @@ test('it can update an asset with plugins to be smaller', async (t) => {
   const umi = await createUmi();
   const asset = await createAsset(umi, {
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
     plugins: [
       pluginAuthorityPair({ type: 'FreezeDelegate', data: { frozen: false } }),
     ],
@@ -166,7 +166,7 @@ test('it can update an asset update authority', async (t) => {
   await updateV1(umi, {
     asset: asset.publicKey,
     newName: 'Test Bread 2',
-    newUri: 'https://example.com/bread2',
+    newUri: 'https://exatple.com/bread2',
     newUpdateAuthority: updateAuthority('Address', [
       newUpdateAuthority.publicKey,
     ]),
@@ -177,7 +177,7 @@ test('it can update an asset update authority', async (t) => {
     owner: umi.identity.publicKey,
     updateAuthority: { type: 'Address', address: newUpdateAuthority.publicKey },
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
   });
 });
 
@@ -189,7 +189,7 @@ test('it can update an asset update authority to None', async (t) => {
   await updateV1(umi, {
     asset: asset.publicKey,
     newName: 'Test Bread 2',
-    newUri: 'https://example.com/bread2',
+    newUri: 'https://exatple.com/bread2',
     newUpdateAuthority: updateAuthority('None'),
   }).sendAndConfirm(umi);
 
@@ -198,7 +198,7 @@ test('it can update an asset update authority to None', async (t) => {
     owner: umi.identity.publicKey,
     updateAuthority: { type: 'None' },
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
   });
 });
 
@@ -214,7 +214,7 @@ test('it can update an asset with plugins update authority to None', async (t) =
   await updateV1(umi, {
     asset: asset.publicKey,
     newName: 'Test Bread 2',
-    newUri: 'https://example.com/bread2',
+    newUri: 'https://exatple.com/bread2',
     newUpdateAuthority: updateAuthority('None'),
   }).sendAndConfirm(umi);
 
@@ -223,7 +223,7 @@ test('it can update an asset with plugins update authority to None', async (t) =
     owner: umi.identity.publicKey,
     updateAuthority: { type: 'None' },
     name: 'Test Bread 2',
-    uri: 'https://example.com/bread2',
+    uri: 'https://exatple.com/bread2',
   });
 });
 
@@ -236,7 +236,7 @@ test('it cannot update an asset update authority to be part of a collection usin
   const result = updateV1(umi, {
     asset: asset.publicKey,
     newName: 'Test Bread 2',
-    newUri: 'https://example.com/bread2',
+    newUri: 'https://exatple.com/bread2',
     newUpdateAuthority: updateAuthority('Collection', [
       newCollection.publicKey,
     ]),
@@ -253,7 +253,7 @@ test('it cannot remove an asset from a collection using updateV1', async (t) => 
   const result = updateV1(umi, {
     asset: asset.publicKey,
     newName: 'Test Bread 2',
-    newUri: 'https://example.com/bread2',
+    newUri: 'https://exatple.com/bread2',
     collection: collection.publicKey,
     newUpdateAuthority: updateAuthority('Address', [umi.identity.publicKey]),
   }).sendAndConfirm(umi);
@@ -273,7 +273,7 @@ test('it cannot update an asset using wrong authority', async (t) => {
   const result = updateV1(umi, {
     asset: asset.publicKey,
     newName: 'Test Bread 2',
-    newUri: 'https://example.com/bread2',
+    newUri: 'https://exatple.com/bread2',
     newUpdateAuthority: updateAuthority('Address', [
       newUpdateAuthority.publicKey,
     ]),
@@ -298,7 +298,7 @@ test('it cannot use an invalid system program for assets', async (t) => {
   const result = updateV1(umi, {
     asset: asset.publicKey,
     newName: 'Test Bread 2',
-    newUri: 'https://example.com/bread2',
+    newUri: 'https://exatple.com/bread2',
     systemProgram: fakeSystemProgram.publicKey,
   }).sendAndConfirm(umi);
 
@@ -314,7 +314,7 @@ test('it cannot use an invalid noop program for assets', async (t) => {
   const result = updateV1(umi, {
     asset: asset.publicKey,
     newName: 'Test Bread 2',
-    newUri: 'https://example.com/bread2',
+    newUri: 'https://exatple.com/bread2',
     logWrapper: fakeLogWrapper.publicKey,
   }).sendAndConfirm(umi);
 
@@ -330,7 +330,7 @@ test('it cannot use an invalid system program for collections', async (t) => {
   const result = updateCollectionV1(umi, {
     collection: collection.publicKey,
     newName: 'Test Bread 2',
-    newUri: 'https://example.com/bread2',
+    newUri: 'https://exatple.com/bread2',
     systemProgram: fakeSystemProgram.publicKey,
   }).sendAndConfirm(umi);
 
@@ -346,7 +346,7 @@ test('it cannot use an invalid noop program for collections', async (t) => {
   const result = updateCollectionV1(umi, {
     collection: collection.publicKey,
     newName: 'Test Bread 2',
-    newUri: 'https://example.com/bread2',
+    newUri: 'https://exatple.com/bread2',
     logWrapper: fakeLogWrapper.publicKey,
   }).sendAndConfirm(umi);
 

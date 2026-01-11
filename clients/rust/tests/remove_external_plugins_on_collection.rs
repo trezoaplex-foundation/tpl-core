@@ -1,6 +1,6 @@
 #![cfg(feature = "test-sbf")]
 pub mod setup;
-use mpl_core::{
+use tpl_core::{
     instructions::RemoveCollectionExternalPluginAdapterV1Builder,
     types::{
         AppData, AppDataInitInfo, ExternalCheckResult, ExternalPluginAdapter,
@@ -10,13 +10,13 @@ use mpl_core::{
 };
 pub use setup::*;
 
-use solana_program_test::tokio;
-use solana_sdk::{pubkey::Pubkey, signature::Keypair, signer::Signer, transaction::Transaction};
+use trezoa_program_test::tokio;
+use trezoa_sdk::{pubkey::Pubkey, signature::Keypair, signer::Signer, transaction::Transaction};
 
 #[tokio::test]
 #[ignore]
 async fn test_remove_lifecycle_hook_on_collection() {
-    // Note we can reference the asset version of this test when ready to implement.
+    // Note we can reference the asset version of this test when ready to itplement.
     todo!()
 }
 

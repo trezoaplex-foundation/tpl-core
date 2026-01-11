@@ -1,4 +1,4 @@
-import { Context } from '@metaplex-foundation/umi';
+import { Context } from '@trezoaplex-foundation/umi';
 import { approvePluginAuthorityV1, PluginType } from '../generated';
 import { PluginAuthority, pluginAuthorityToBase } from '../plugins';
 

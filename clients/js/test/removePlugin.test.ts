@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import { generateSigner } from '@metaplex-foundation/umi';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 import {
   PluginType,
   fetchAssetV1,
@@ -219,7 +219,7 @@ test('it can remove authority managed plugin from collection using delegate auth
     asset: asset.publicKey,
     pluginType: PluginType.Royalties,
     authority: delegate,
-    // We provide the payer because an account with 0 lamports cannot receive small SOL payments.
+    // We provide the payer because an account with 0 lamports cannot receive small TRZ payments.
     payer: umi.identity,
     collection: collection.publicKey,
   }).sendAndConfirm(umi);

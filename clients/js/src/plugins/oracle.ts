@@ -1,4 +1,4 @@
-import { Context, PublicKey } from '@metaplex-foundation/umi';
+import { Context, PublicKey } from '@trezoaplex-foundation/umi';
 import {
   ExtraAccount,
   extraAccountFromBase,
@@ -134,7 +134,7 @@ export function deserializeOracleValidation(
   let offs = 0;
   if (offset.type === 'Custom') {
     offs = Number(offset.offset);
-  } else if (offset.type === 'Anchor') {
+  } else if (offset.type === 'Trezoa') {
     offs = 8;
   }
 

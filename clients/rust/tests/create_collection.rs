@@ -1,10 +1,10 @@
 #![cfg(feature = "test-sbf")]
 pub mod setup;
-use mpl_core::types::{Creator, Plugin, PluginAuthority, PluginAuthorityPair, Royalties, RuleSet};
+use tpl_core::types::{Creator, Plugin, PluginAuthority, PluginAuthorityPair, Royalties, RuleSet};
 pub use setup::*;
 
-use solana_program_test::tokio;
-use solana_sdk::{native_token::LAMPORTS_PER_SOL, signature::Keypair, signer::Signer};
+use trezoa_program_test::tokio;
+use trezoa_sdk::{native_token::LAMPORTS_PER_TRZ, signature::Keypair, signer::Signer};
 
 #[tokio::test]
 async fn test_create_collection() {
@@ -49,7 +49,7 @@ async fn create_collection_with_different_payer() {
 
     let collection = Keypair::new();
     let payer = Keypair::new();
-    airdrop(&mut context, &payer.pubkey(), LAMPORTS_PER_SOL)
+    airdrop(&mut context, &payer.pubkey(), LAMPORTS_PER_TRZ)
         .await
         .unwrap();
     create_collection(
@@ -146,7 +146,7 @@ async fn create_collection_with_different_update_authority() {
 
     let collection = Keypair::new();
     let payer = Keypair::new();
-    airdrop(&mut context, &payer.pubkey(), LAMPORTS_PER_SOL)
+    airdrop(&mut context, &payer.pubkey(), LAMPORTS_PER_TRZ)
         .await
         .unwrap();
     let update_authority = Keypair::new();

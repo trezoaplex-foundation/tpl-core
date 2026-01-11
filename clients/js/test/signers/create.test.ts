@@ -2,8 +2,8 @@ import {
   generateSigner,
   sol,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
-import { createUmi } from '@metaplex-foundation/umi-bundle-tests';
+} from '@trezoaplex-foundation/umi';
+import { createUmi } from '@trezoaplex-foundation/umi-bundle-tests';
 import test from 'ava';
 import { DEFAULT_ASSET, assertAsset } from '../_setupRaw';
 import { createV1 } from '../../src';

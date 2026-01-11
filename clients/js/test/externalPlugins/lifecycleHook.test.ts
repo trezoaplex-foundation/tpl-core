@@ -1,7 +1,7 @@
 import test from 'ava';
 
-import { mplCoreOracleExample } from '@metaplex-foundation/mpl-core-oracle-example';
-import { generateSigner } from '@metaplex-foundation/umi';
+import { tplCoreOracleExatple } from '@trezoaplex-foundation/tpl-core-oracle-exatple';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 import {
   assertAsset,
   createUmi as baseCreateUmi,
@@ -11,7 +11,7 @@ import { createAsset } from '../_setupSdk';
 import { addPlugin, CheckResult, updatePlugin } from '../../src';
 
 const createUmi = async () =>
-  (await baseCreateUmi()).use(mplCoreOracleExample());
+  (await baseCreateUmi()).use(tplCoreOracleExatple());
 
 test.skip('it cannot create asset with lifecycle hook that has no lifecycle checks', async (t) => {
   const umi = await createUmi();

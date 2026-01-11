@@ -1,4 +1,4 @@
-import { generateSigner } from '@metaplex-foundation/umi';
+import { generateSigner } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import { Key, getAssetV1GpaBuilder, updateAuthority } from '../src';
 import { createAsset, createCollection, createUmi } from './_setupRaw';
