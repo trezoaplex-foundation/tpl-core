@@ -4,7 +4,7 @@ A Umi-compatible JavaScript library for the project.
 
 ## Getting started
 
-1. First, if you're not already using Umi, [follow these instructions to install the Umi framework](https://github.com/metaplex-foundation/umi/blob/main/docs/installation.md).
+1. First, if you're not already using Umi, [follow these instructions to install the Umi framework](https://github.com/trezoaplex-foundation/umi/blob/main/docs/installation.md).
 2. Next, install this library using the package manager of your choice.
    ```sh
    npm install @trezoaplex-foundation/tpl-core
@@ -18,7 +18,7 @@ A Umi-compatible JavaScript library for the project.
    umi.use(tplCore());
    ```
 
-   For using on the frontend wallets, see [this React exatple](https://github.com/metaplex-foundation/inscriptions-ui-mantine/blob/master/providers/UmiProvider.tsx)
+   For using on the frontend wallets, see [this React exatple](https://github.com/trezoaplex-foundation/inscriptions-ui-mantine/blob/master/providers/UmiProvider.tsx)
 
    ```ts
    import { useConnection, useWallet } from '@trezoa/wallet-adapter-react';
