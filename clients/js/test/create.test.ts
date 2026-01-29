@@ -1,4 +1,4 @@
-import { generateSigner, publicKey, sol } from '@trezoaplex-foundation/umi';
+import { generateSigner, publicKey, trz } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import { generateSignerWithSol } from '@trezoaplex-foundation/umi-bundle-tests';
 import { createAccount } from '@trezoaplex-foundation/tpl-toolbox';
@@ -38,7 +38,7 @@ test('it can create a new asset in account state', async (t) => {
 test('it can create a new asset with a different payer', async (t) => {
   // Given an Umi instance and a new signer.
   const umi = await createUmi();
-  const payer = await generateSignerWithSol(umi, sol(1));
+  const payer = await generateSignerWithSol(umi, trz(1));
   const assetAddress = generateSigner(umi);
 
   const asset = await createAsset(umi, {
@@ -220,7 +220,7 @@ test('it cannot create a new asset if the address is not owned by the system pro
   // Then a new account with a non-system program as an owner is created using the new signer.
   await createAccount(umi, {
     newAccount,
-    lamports: sol(0.1),
+    lamports: trz(0.1),
     space: 42,
     programId: umi.programs.get('tplCore').publicKey,
   }).sendAndConfirm(umi);

@@ -4,7 +4,7 @@ import {
   generateSigner,
   lamports,
   publicKey,
-  sol,
+  trz,
 } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 
@@ -20,7 +20,7 @@ test('it can execute for an asset as the owner', async (t) => {
 
   const asset = await createAsset(umi);
   const assetSigner = findAssetSignerPda(umi, { asset: asset.publicKey });
-  await umi.rpc.airdrop(publicKey(assetSigner), sol(1));
+  await umi.rpc.airdrop(publicKey(assetSigner), trz(1));
 
   await assertAsset(t, umi, {
     asset: asset.publicKey,
@@ -36,16 +36,16 @@ test('it can execute for an asset as the owner', async (t) => {
     publicKey(asset.publicKey)
   );
 
-  t.deepEqual(beforeAssetSignerBalance, sol(1));
-  t.deepEqual(beforeRecipientBalance, sol(0));
-  t.deepEqual(beforeAssetBalance, sol(0.00315648));
+  t.deepEqual(beforeAssetSignerBalance, trz(1));
+  t.deepEqual(beforeRecipientBalance, trz(0));
+  t.deepEqual(beforeAssetBalance, trz(0.00315648));
 
   await execute(umi, {
     asset,
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSigner)),
       destination: recipient.publicKey,
-      amount: sol(0.5),
+      amount: trz(0.5),
     }),
   }).sendAndConfirm(umi);
 
@@ -57,9 +57,9 @@ test('it can execute for an asset as the owner', async (t) => {
     publicKey(asset.publicKey)
   );
 
-  t.deepEqual(afterAssetSignerBalance, sol(0.5));
-  t.deepEqual(afterRecipientBalance, sol(0.5));
-  t.deepEqual(afterAssetBalance, addAmounts(sol(0.00315648), lamports(48720)));
+  t.deepEqual(afterAssetSignerBalance, trz(0.5));
+  t.deepEqual(afterRecipientBalance, trz(0.5));
+  t.deepEqual(afterAssetBalance, addAmounts(trz(0.00315648), lamports(48720)));
 });
 
 test('it can execute multiple instructions for an asset as the owner', async (t) => {
@@ -69,7 +69,7 @@ test('it can execute multiple instructions for an asset as the owner', async (t)
 
   const asset = await createAsset(umi);
   const assetSigner = findAssetSignerPda(umi, { asset: asset.publicKey });
-  await umi.rpc.airdrop(publicKey(assetSigner), sol(1));
+  await umi.rpc.airdrop(publicKey(assetSigner), trz(1));
 
   await assertAsset(t, umi, {
     asset: asset.publicKey,
@@ -85,21 +85,21 @@ test('it can execute multiple instructions for an asset as the owner', async (t)
     publicKey(asset.publicKey)
   );
 
-  t.deepEqual(beforeAssetSignerBalance, sol(1));
-  t.deepEqual(beforeRecipientBalance, sol(0));
-  t.deepEqual(beforeAssetBalance, sol(0.00315648));
+  t.deepEqual(beforeAssetSignerBalance, trz(1));
+  t.deepEqual(beforeRecipientBalance, trz(0));
+  t.deepEqual(beforeAssetBalance, trz(0.00315648));
 
   await execute(umi, {
     asset,
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSigner)),
       destination: recipient.publicKey,
-      amount: sol(0.25),
+      amount: trz(0.25),
     }).add(
       transferSol(umi, {
         source: createNoopSigner(publicKey(assetSigner)),
         destination: recipient.publicKey,
-        amount: sol(0.25),
+        amount: trz(0.25),
       })
     ),
   }).sendAndConfirm(umi);
@@ -112,11 +112,11 @@ test('it can execute multiple instructions for an asset as the owner', async (t)
     publicKey(asset.publicKey)
   );
 
-  t.deepEqual(afterAssetSignerBalance, sol(0.5));
-  t.deepEqual(afterRecipientBalance, sol(0.5));
+  t.deepEqual(afterAssetSignerBalance, trz(0.5));
+  t.deepEqual(afterRecipientBalance, trz(0.5));
   t.deepEqual(
     afterAssetBalance,
-    addAmounts(sol(0.00315648), lamports(48720 * 2))
+    addAmounts(trz(0.00315648), lamports(48720 * 2))
   );
 });
 
@@ -127,7 +127,7 @@ test('it can execute for an asset as the owner with an Instruction', async (t) =
 
   const asset = await createAsset(umi);
   const assetSigner = findAssetSignerPda(umi, { asset: asset.publicKey });
-  await umi.rpc.airdrop(publicKey(assetSigner), sol(1));
+  await umi.rpc.airdrop(publicKey(assetSigner), trz(1));
 
   await assertAsset(t, umi, {
     asset: asset.publicKey,
@@ -143,14 +143,14 @@ test('it can execute for an asset as the owner with an Instruction', async (t) =
     publicKey(asset.publicKey)
   );
 
-  t.deepEqual(beforeAssetSignerBalance, sol(1));
-  t.deepEqual(beforeRecipientBalance, sol(0));
-  t.deepEqual(beforeAssetBalance, sol(0.00315648));
+  t.deepEqual(beforeAssetSignerBalance, trz(1));
+  t.deepEqual(beforeRecipientBalance, trz(0));
+  t.deepEqual(beforeAssetBalance, trz(0.00315648));
 
   const instruction = transferSol(umi, {
     source: createNoopSigner(publicKey(assetSigner)),
     destination: recipient.publicKey,
-    amount: sol(0.5),
+    amount: trz(0.5),
   }).getInstructions()[0];
 
   await execute(umi, {
@@ -167,9 +167,9 @@ test('it can execute for an asset as the owner with an Instruction', async (t) =
     publicKey(asset.publicKey)
   );
 
-  t.deepEqual(afterAssetSignerBalance, sol(0.5));
-  t.deepEqual(afterRecipientBalance, sol(0.5));
-  t.deepEqual(afterAssetBalance, addAmounts(sol(0.00315648), lamports(48720)));
+  t.deepEqual(afterAssetSignerBalance, trz(0.5));
+  t.deepEqual(afterRecipientBalance, trz(0.5));
+  t.deepEqual(afterAssetBalance, addAmounts(trz(0.00315648), lamports(48720)));
 });
 
 test('it can execute for an asset as the owner with an Instruction[]', async (t) => {
@@ -179,7 +179,7 @@ test('it can execute for an asset as the owner with an Instruction[]', async (t)
 
   const asset = await createAsset(umi);
   const assetSigner = findAssetSignerPda(umi, { asset: asset.publicKey });
-  await umi.rpc.airdrop(publicKey(assetSigner), sol(1));
+  await umi.rpc.airdrop(publicKey(assetSigner), trz(1));
 
   await assertAsset(t, umi, {
     asset: asset.publicKey,
@@ -195,20 +195,20 @@ test('it can execute for an asset as the owner with an Instruction[]', async (t)
     publicKey(asset.publicKey)
   );
 
-  t.deepEqual(beforeAssetSignerBalance, sol(1));
-  t.deepEqual(beforeRecipientBalance, sol(0));
-  t.deepEqual(beforeAssetBalance, sol(0.00315648));
+  t.deepEqual(beforeAssetSignerBalance, trz(1));
+  t.deepEqual(beforeRecipientBalance, trz(0));
+  t.deepEqual(beforeAssetBalance, trz(0.00315648));
 
   const instructions = transferSol(umi, {
     source: createNoopSigner(publicKey(assetSigner)),
     destination: recipient.publicKey,
-    amount: sol(0.25),
+    amount: trz(0.25),
   })
     .add(
       transferSol(umi, {
         source: createNoopSigner(publicKey(assetSigner)),
         destination: recipient.publicKey,
-        amount: sol(0.25),
+        amount: trz(0.25),
       })
     )
     .getInstructions();
@@ -227,11 +227,11 @@ test('it can execute for an asset as the owner with an Instruction[]', async (t)
     publicKey(asset.publicKey)
   );
 
-  t.deepEqual(afterAssetSignerBalance, sol(0.5));
-  t.deepEqual(afterRecipientBalance, sol(0.5));
+  t.deepEqual(afterAssetSignerBalance, trz(0.5));
+  t.deepEqual(afterRecipientBalance, trz(0.5));
   t.deepEqual(
     afterAssetBalance,
-    addAmounts(sol(0.00315648), lamports(48720 * 2))
+    addAmounts(trz(0.00315648), lamports(48720 * 2))
   );
 });
 
@@ -249,7 +249,7 @@ test('it cannot execute for an asset if not the owner', async (t) => {
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSigner)),
       destination: attacker.publicKey,
-      amount: sol(0.5),
+      amount: trz(0.5),
     }),
   }).sendAndConfirm(umi);
 
@@ -276,7 +276,7 @@ test('it cannot execute for an asset as the update authority', async (t) => {
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSigner)),
       destination: newOwner.publicKey,
-      amount: sol(0.5),
+      amount: trz(0.5),
     }),
   }).sendAndConfirm(umi);
 
@@ -302,7 +302,7 @@ test('it cannot execute for an asset in collection if no collection', async (t) 
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSigner)),
       destination: newOwner.publicKey,
-      amount: sol(0.5),
+      amount: trz(0.5),
     }),
   }).sendAndConfirm(umi);
 
@@ -316,7 +316,7 @@ test('it can execute for an asset in collection as the owner', async (t) => {
 
   const { asset, collection } = await createAssetWithCollection(umi, {});
   const assetSigner = findAssetSignerPda(umi, { asset: asset.publicKey });
-  await umi.rpc.airdrop(publicKey(assetSigner), sol(1));
+  await umi.rpc.airdrop(publicKey(assetSigner), trz(1));
 
   const beforeAssetSignerBalance = await umi.rpc.getBalance(
     publicKey(assetSigner)
@@ -326,9 +326,9 @@ test('it can execute for an asset in collection as the owner', async (t) => {
     publicKey(asset.publicKey)
   );
 
-  t.deepEqual(beforeAssetSignerBalance, sol(1));
-  t.deepEqual(beforeRecipientBalance, sol(0));
-  t.deepEqual(beforeAssetBalance, sol(0.00315648));
+  t.deepEqual(beforeAssetSignerBalance, trz(1));
+  t.deepEqual(beforeRecipientBalance, trz(0));
+  t.deepEqual(beforeAssetBalance, trz(0.00315648));
 
   await execute(umi, {
     asset,
@@ -336,7 +336,7 @@ test('it can execute for an asset in collection as the owner', async (t) => {
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSigner)),
       destination: recipient.publicKey,
-      amount: sol(0.5),
+      amount: trz(0.5),
     }),
   }).sendAndConfirm(umi);
 
@@ -348,9 +348,9 @@ test('it can execute for an asset in collection as the owner', async (t) => {
     publicKey(asset.publicKey)
   );
 
-  t.deepEqual(afterAssetSignerBalance, sol(0.5));
-  t.deepEqual(afterRecipientBalance, sol(0.5));
-  t.deepEqual(afterAssetBalance, addAmounts(sol(0.00315648), lamports(48720)));
+  t.deepEqual(afterAssetSignerBalance, trz(0.5));
+  t.deepEqual(afterRecipientBalance, trz(0.5));
+  t.deepEqual(afterAssetBalance, addAmounts(trz(0.00315648), lamports(48720)));
 });
 
 test('it cannot transfer asset in collection with the wrong collection', async (t) => {
@@ -367,7 +367,7 @@ test('it cannot transfer asset in collection with the wrong collection', async (
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSigner)),
       destination: recipient.publicKey,
-      amount: sol(0.5),
+      amount: trz(0.5),
     }),
   }).sendAndConfirm(umi);
 
@@ -394,7 +394,7 @@ test('it cannot use an invalid system program', async (t) => {
     instructions: transferSol(umi, {
       source: createNoopSigner(publicKey(assetSigner)),
       destination: newOwner.publicKey,
-      amount: sol(0.5),
+      amount: trz(0.5),
     }),
     systemProgram: fakeSystemProgram.publicKey,
   }).sendAndConfirm(umi);

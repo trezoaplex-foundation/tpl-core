@@ -1,7 +1,7 @@
 import {
   assertAccountExists,
   generateSigner,
-  sol,
+  trz,
   transactionBuilder,
 } from '@trezoaplex-foundation/umi';
 import { createUmi } from '@trezoaplex-foundation/umi-bundle-tests';
@@ -13,7 +13,7 @@ test('it can burn an asset as the owner', async (t) => {
   // Given a Umi instance and a new signer.
   const umi = await createUmi();
   const payer = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
 
   const asset = await createAsset(umi, {
     payer,
@@ -41,7 +41,7 @@ test('it can burn an asset as the owner', async (t) => {
   const afterAsset = await umi.rpc.getAccount(asset.publicKey);
   t.true(afterAsset.exists);
   assertAccountExists(afterAsset);
-  t.deepEqual(afterAsset.lamports, sol(0.00089784 + 0.0015));
+  t.deepEqual(afterAsset.lamports, trz(0.00089784 + 0.0015));
   t.is(afterAsset.data.length, 1);
   t.is(afterAsset.data[0], Key.Uninitialized);
 });
@@ -50,7 +50,7 @@ test('it cannot burn an asset if the owner does not sign', async (t) => {
   // Given a Umi instance and a new signer.
   const umi = await createUmi();
   const payer = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
 
   const asset = await createAsset(umi, {
     payer,
@@ -92,7 +92,7 @@ test('it cannot burn an asset if an authority is provided but does not sign', as
   const umi = await createUmi();
   const payer = generateSigner(umi);
   const authority = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
 
   const asset = await createAsset(umi, {
     payer,
@@ -135,7 +135,7 @@ test('it cannot burn an asset if an authority is provided and the payer does not
   const umi = await createUmi();
   const payer = generateSigner(umi);
   const authority = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
 
   const asset = await createAsset(umi, {
     payer,

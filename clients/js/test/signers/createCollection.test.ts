@@ -1,6 +1,6 @@
 import {
   generateSigner,
-  sol,
+  trz,
   transactionBuilder,
 } from '@trezoaplex-foundation/umi';
 import { createUmi } from '@trezoaplex-foundation/umi-bundle-tests';
@@ -12,7 +12,7 @@ test('it can create a new asset', async (t) => {
   // Given an Umi instance and a new signer.
   const umi = await createUmi();
   const payer = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
   const collectionAddress = generateSigner(umi);
 
   const instruction = createCollectionV1(umi, {
@@ -40,7 +40,7 @@ test('it cannot create a new collection if the collection does not sign', async 
   // Given an Umi instance and a new signer.
   const umi = await createUmi();
   const payer = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
   const collectionAddress = generateSigner(umi);
 
   const instruction = createCollectionV1(umi, {
@@ -68,7 +68,7 @@ test('it cannot create a new collection if the payer does not sign', async (t) =
   // Given an Umi instance and a new signer.
   const umi = await createUmi();
   const payer = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
   const collectionAddress = generateSigner(umi);
 
   const instruction = createCollectionV1(umi, {

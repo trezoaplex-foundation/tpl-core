@@ -1,6 +1,6 @@
 import {
   generateSigner,
-  sol,
+  trz,
   transactionBuilder,
 } from '@trezoaplex-foundation/umi';
 import { createUmi } from '@trezoaplex-foundation/umi-bundle-tests';
@@ -12,7 +12,7 @@ test('it can transfer an asset as the owner', async (t) => {
   // Given a Umi instance and a new signer.
   const umi = await createUmi();
   const payer = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
   const newOwner = generateSigner(umi);
 
   const asset = await createAsset(umi, {
@@ -49,7 +49,7 @@ test('it cannot transfer an asset if the owner does not sign', async (t) => {
   // Given a Umi instance and a new signer.
   const umi = await createUmi();
   const payer = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
   const newOwner = generateSigner(umi);
 
   const asset = await createAsset(umi, {
@@ -93,7 +93,7 @@ test('it cannot transfer an asset if the authority is provided but does not sign
   const umi = await createUmi();
   const payer = generateSigner(umi);
   const authority = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
   const newOwner = generateSigner(umi);
 
   const asset = await createAsset(umi, {
@@ -139,7 +139,7 @@ test('it cannot transfer an asset if the authority is provided and the payer doe
   const umi = await createUmi();
   const payer = generateSigner(umi);
   const authority = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
   const newOwner = generateSigner(umi);
 
   const asset = await createAsset(umi, {

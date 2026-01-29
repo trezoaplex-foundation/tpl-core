@@ -2,7 +2,7 @@ import test from 'ava';
 import {
   generateSigner,
   assertAccountExists,
-  sol,
+  trz,
 } from '@trezoaplex-foundation/umi';
 import {
   pluginAuthorityPair,
@@ -41,14 +41,14 @@ test('it can burn an assets as an owner', async (t) => {
   }).sendAndConfirm(umi);
 
   const afterAsset = await assertBurned(t, umi, asset.publicKey);
-  t.deepEqual(afterAsset.lamports, sol(0.00089784 + 0.0015));
+  t.deepEqual(afterAsset.lamports, trz(0.00089784 + 0.0015));
 });
 
 test('it can burn an assets as a delegate', async (t) => {
   // Given a Umi instance and a new signer.
   const umi = await createUmi();
   const owner = generateSigner(umi);
-  await umi.rpc.airdrop(owner.publicKey, sol(10));
+  await umi.rpc.airdrop(owner.publicKey, trz(10));
   const newOwner = generateSigner(umi);
 
   const asset = await createAsset(umi, {
@@ -75,7 +75,7 @@ test('it can burn an assets as a delegate', async (t) => {
   const afterAsset = await umi.rpc.getAccount(asset.publicKey);
   t.true(afterAsset.exists);
   assertAccountExists(afterAsset);
-  t.deepEqual(afterAsset.lamports, sol(0.00089784 + 0.0015));
+  t.deepEqual(afterAsset.lamports, trz(0.00089784 + 0.0015));
   t.is(afterAsset.data.length, 1);
   t.is(afterAsset.data[0], Key.Uninitialized);
 });
@@ -84,7 +84,7 @@ test('it can burn an assets as a delegate for a collection', async (t) => {
   // Given a Umi instance and a new signer.
   const umi = await createUmi();
   const firstAssetOwner = generateSigner(umi);
-  await umi.rpc.airdrop(firstAssetOwner.publicKey, sol(10));
+  await umi.rpc.airdrop(firstAssetOwner.publicKey, trz(10));
   const newOwner = generateSigner(umi);
   const brandNewOwner = generateSigner(umi);
 
@@ -155,14 +155,14 @@ test('it can burn an assets as a delegate for a collection', async (t) => {
   const afterAsset1 = await umi.rpc.getAccount(asset1.publicKey);
   t.true(afterAsset1.exists);
   assertAccountExists(afterAsset1);
-  t.deepEqual(afterAsset1.lamports, sol(0.00089784 + 0.0015));
+  t.deepEqual(afterAsset1.lamports, trz(0.00089784 + 0.0015));
   t.is(afterAsset1.data.length, 1);
   t.is(afterAsset1.data[0], Key.Uninitialized);
 
   const afterAsset2 = await umi.rpc.getAccount(asset2.publicKey);
   t.true(afterAsset2.exists);
   assertAccountExists(afterAsset2);
-  t.deepEqual(afterAsset2.lamports, sol(0.00089784 + 0.0015));
+  t.deepEqual(afterAsset2.lamports, trz(0.00089784 + 0.0015));
   t.is(afterAsset2.data.length, 1);
   t.is(afterAsset2.data[0], Key.Uninitialized);
 });
@@ -171,7 +171,7 @@ test('it can burn an asset which is the part of a collection', async (t) => {
   // Given a Umi instance and a new signer.
   const umi = await createUmi();
   const firstAssetOwner = generateSigner(umi);
-  await umi.rpc.airdrop(firstAssetOwner.publicKey, sol(10));
+  await umi.rpc.airdrop(firstAssetOwner.publicKey, trz(10));
   const newOwner = generateSigner(umi);
   const brandNewOwner = generateSigner(umi);
 
@@ -215,7 +215,7 @@ test('it can burn an asset which is the part of a collection', async (t) => {
   const afterAsset = await umi.rpc.getAccount(asset.publicKey);
   t.true(afterAsset.exists);
   assertAccountExists(afterAsset);
-  t.deepEqual(afterAsset.lamports, sol(0.00089784 + 0.0015));
+  t.deepEqual(afterAsset.lamports, trz(0.00089784 + 0.0015));
   t.is(afterAsset.data.length, 1);
   t.is(afterAsset.data[0], Key.Uninitialized);
 });

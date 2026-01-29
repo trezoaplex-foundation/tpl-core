@@ -131,7 +131,7 @@ pub(crate) fn transfer<'a>(accounts: &'a [AccountInfo<'a>], args: TransferV1Args
                 system_program,
             )?;
 
-            // Send the spl-noop event for indexing the compressed asset.
+            // Send the tpl-noop event for indexing the compressed asset.
             compression_proof.wrap()
         }
         Key::AssetV1 => {

@@ -52,7 +52,7 @@ pub trait Compressible: BorshSerialize + BorshDeserialize {
     }
 }
 
-/// A trait for data that can be wrapped by the spl-noop program.
+/// A trait for data that can be wrapped by the tpl-noop program.
 pub trait Wrappable: BorshSerialize + BorshDeserialize {
     /// Write the data to ledger state by wrapping it in a noop instruction.
     fn wrap(&self) -> ProgramResult {

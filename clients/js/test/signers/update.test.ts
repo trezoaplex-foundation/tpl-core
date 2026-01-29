@@ -1,7 +1,7 @@
 import {
   generateSigner,
   none,
-  sol,
+  trz,
   transactionBuilder,
 } from '@trezoaplex-foundation/umi';
 import { createUmi } from '@trezoaplex-foundation/umi-bundle-tests';
@@ -14,7 +14,7 @@ test('it can update an asset as the update authority', async (t) => {
   const umi = await createUmi();
   const payer = generateSigner(umi);
   const owner = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
 
   const asset = await createAsset(umi, {
     owner: owner.publicKey,
@@ -54,7 +54,7 @@ test('it cannot update an asset if the payer does not sign', async (t) => {
   const umi = await createUmi();
   const payer = generateSigner(umi);
   const owner = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
 
   const asset = await createAsset(umi, {
     owner: owner.publicKey,
@@ -101,7 +101,7 @@ test('it cannot update an asset if the authority is provided but does not sign',
   const payer = generateSigner(umi);
   const authority = generateSigner(umi);
   const owner = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
 
   const asset = await createAsset(umi, {
     owner: owner.publicKey,
@@ -149,7 +149,7 @@ test('it cannot update an asset if the authority is provided and the payer does 
   const payer = generateSigner(umi);
   const authority = generateSigner(umi);
   const owner = generateSigner(umi);
-  await umi.rpc.airdrop(payer.publicKey, sol(10));
+  await umi.rpc.airdrop(payer.publicKey, trz(10));
 
   const asset = await createAsset(umi, {
     owner: owner.publicKey,

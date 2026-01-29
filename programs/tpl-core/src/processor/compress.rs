@@ -73,7 +73,7 @@ pub(crate) fn compress<'a>(
                 ctx.accounts.system_program,
             )?;
 
-            // Send the spl-noop event for indexing the compressed asset.
+            // Send the tpl-noop event for indexing the compressed asset.
             compression_proof.wrap()?;
 
             // TODO Enable compression.

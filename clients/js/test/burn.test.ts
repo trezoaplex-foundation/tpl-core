@@ -1,4 +1,4 @@
-import { generateSigner, sol } from '@trezoaplex-foundation/umi';
+import { generateSigner, trz } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 
 import { generateSignerWithSol } from '@trezoaplex-foundation/umi-bundle-tests';
@@ -31,7 +31,7 @@ test('it can burn an asset as the owner', async (t) => {
 
   // And the asset address still exists but was resized to 1.
   const afterAsset = await assertBurned(t, umi, asset.publicKey);
-  t.deepEqual(afterAsset.lamports, sol(0.00089784 + 0.0015));
+  t.deepEqual(afterAsset.lamports, trz(0.00089784 + 0.0015));
 });
 
 test('it cannot burn an asset if not the owner', async (t) => {
@@ -254,7 +254,7 @@ test('it can burn using owner authority', async (t) => {
 
   // And the asset address still exists but was resized to 1.
   const afterAsset = await assertBurned(t, umi, asset.publicKey);
-  t.deepEqual(afterAsset.lamports, sol(0.00089784 + 0.0015));
+  t.deepEqual(afterAsset.lamports, trz(0.00089784 + 0.0015));
 });
 
 test('it cannot burn an asset with the wrong collection specified', async (t) => {
@@ -295,7 +295,7 @@ test('it can burn asset with different payer', async (t) => {
 
   // And the asset address still exists but was resized to 1.
   const afterAsset = await assertBurned(t, umi, asset.publicKey);
-  t.deepEqual(afterAsset.lamports, sol(0.00089784 + 0.0015));
+  t.deepEqual(afterAsset.lamports, trz(0.00089784 + 0.0015));
 
   const lamportsAfter = await umi.rpc.getBalance(umi.identity.publicKey);
 

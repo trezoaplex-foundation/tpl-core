@@ -66,12 +66,12 @@ pub(crate) fn burn<'a>(accounts: &'a [AccountInfo<'a>], args: BurnV1Args) -> Pro
                 system_program,
             )?;
 
-            // Increment sequence number for the spl-noop event.  Note we don't care about the
+            // Increment sequence number for the tpl-noop event.  Note we don't care about the
             // sequence number in account state because we are closing the account later in this
             // instruction.
             compression_proof.seq = compression_proof.seq.saturating_add(1);
 
-            // Send the spl-noop event for indexing the compressed asset.
+            // Send the tpl-noop event for indexing the compressed asset.
             compression_proof.wrap()?;
 
             // TODO Enable compressed burn.
