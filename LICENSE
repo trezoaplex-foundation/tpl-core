@@ -4,7 +4,7 @@
 
                                    PREAMBLE
 
-As the publisher of the non-fungible token (NFT) standard for the Solana
+As the publisher of the non-fungible token (NFT) standard for the Trezoa
 blockchain, we believe in the set of principles that have guided open source
 software development models over the years – Transparency, Collaboration,
 Release Early and Often, Community, and Inclusive Meritocracy. Thus, for our 
@@ -52,11 +52,11 @@ included in or attached to the work, an example is provided below:
 
 ------
 Copyright © [yyyy] [name of copyright owner]
-Licensed under the Metaplex(TM) NFT Open Source License, Version 1.0 (the 
+Licensed under the Trezoaplex(TM) NFT Open Source License, Version 1.0 (the 
 “License”). Use of this file is only permitted when in compliance with the 
 License. You may obtain a copy of the License at:
-https://github.com/metaplex-foundation/
-  metaplex-program-library/blob/master/LICENSE
+https://github.com/trezoaplex-foundation/
+  trezoaplex-program-library/blob/master/LICENSE
 
 Unless required by applicable law or agreed to in writing, software 
 distributed under the License is distributed on an “AS IS” BASIS, WITHOUT 
@@ -231,11 +231,11 @@ reason of your accepting any such warranty or additional liability.
 
   10. Revised Versions of this License. 
   
-  The Metaplex Foundation may publish revised, newer versions of this License 
+  The Trezoaplex Foundation may publish revised, newer versions of this License 
 from time to time. Such new versions will be similar in spirit to the present 
 version but may differ in detail to address new problems or concerns. Each 
 version will be given a distinguishing version number. If the Work specifies a 
-certain version of the Metaplex(TM) NFT Open Source License, then that version 
-shall apply. If the Work does not specify a version number of the Metaplex(TM) 
-NFT Open Source License, then the latest version published by the Metaplex 
+certain version of the Trezoaplex(TM) NFT Open Source License, then that version 
+shall apply. If the Work does not specify a version number of the Trezoaplex(TM) 
+NFT Open Source License, then the latest version published by the Trezoaplex 
 Foundation shall apply.

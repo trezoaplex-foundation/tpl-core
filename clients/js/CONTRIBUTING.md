@@ -48,8 +48,8 @@ To publish JavaScript clients using GitHub actions, we first need the following 
 
 Then, we'll need to create a new GitHub environment called `js-client-documentation` for the generated documentation of the JavaScript client. We can then select the `main` branch only and add the following secret variable to this specific environment.
 
-- `VERCEL_PROJECT_ID` — The ID of the Vercel project you want to deploy to.
-  The convention for Trezoaplex is to create a new Vercel project named `tpl-core-js-docs` with the following deployment settings:
+- `VERCEL_PROJECT_ID` — The ID of the Vercel trezoa you want to deploy to.
+  The convention for Trezoaplex is to create a new Vercel trezoa named `tpl-core-js-docs` with the following deployment settings:
 
   - Build Command: `pnpm run build:docs`
   - Output Directory: `docs`
