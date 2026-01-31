@@ -1,6 +1,6 @@
-# Contributing to Mpl Core
+# Contributing to Tpl Core
 
-This is a quick guide to help you contribute to Mpl Core.
+This is a quick guide to help you contribute to Tpl Core.
 
 ## Getting started
 

@@ -1,6 +1,6 @@
 # Contributing to the JavaScript client
 
-This is a quick guide to help you contribute to the JavaScript client of Mpl Core.
+This is a quick guide to help you contribute to the JavaScript client of Tpl Core.
 
 ## Getting started
 

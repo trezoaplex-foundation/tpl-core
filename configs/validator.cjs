@@ -11,12 +11,12 @@ module.exports = {
     commitment: "processed",
     programs: [
       {
-        label: "Mpl Core",
+        label: "Tpl Core",
         programId: "CoREENxT6tW1HoK8ypY1SxRMZTcVPm7R94rH4PZNhX7d",
         deployPath: getProgram("mpl_core_program.so"),
       },
       {
-        label: "Mpl Core Oracle Example",
+        label: "Tpl Core Oracle Example",
         programId: "4RZ7RhXeL4oz4kVX5fpRfkNQ3nz1n4eruqBn2AGPQepo",
         deployPath: getProgram("mpl_core_oracle_example.so"),
       },

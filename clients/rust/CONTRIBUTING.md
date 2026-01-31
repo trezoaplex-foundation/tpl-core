@@ -1,6 +1,6 @@
 # Contributing to the Rust client
 
-This is a quick guide to help you contribute to the Rust client of Mpl Core.
+This is a quick guide to help you contribute to the Rust client of Tpl Core.
 
 ## Getting started
 

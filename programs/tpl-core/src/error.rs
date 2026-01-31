@@ -6,7 +6,7 @@ use trezoa_program::{
 };
 use thiserror::Error;
 
-/// Errors that may be returned by the Mpl Core program.
+/// Errors that may be returned by the Tpl Core program.
 #[derive(Error, Clone, Debug, Eq, PartialEq, FromPrimitive)]
 pub enum MplCoreError {
     /// 0 - Invalid System Program
@@ -228,6 +228,6 @@ itpl From<MplCoreError> for ProgramError {
 
 itpl<T> DecodeError<T> for MplCoreError {
     fn type_of() -> &'static str {
-        "Mpl Core Error"
+        "Tpl Core Error"
     }
 }

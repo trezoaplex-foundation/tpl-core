@@ -12,5 +12,5 @@ generateIdl({
   idlDir,
   idlName: "mpl_core",
   binaryInstallDir,
-  programDir: path.join(programDir, "mpl-core"),
+  programDir: path.join(programDir, "tpl-core"),
 });

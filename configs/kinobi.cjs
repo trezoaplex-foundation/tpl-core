@@ -52,7 +52,7 @@ kinobi.update(
     assetSigner: {
       size: 0,
       seeds: [
-        k.constantPdaSeedNodeFromString("mpl-core-execute"),
+        k.constantPdaSeedNodeFromString("tpl-core-execute"),
         k.variablePdaSeedNode(
           "asset",
           k.publicKeyTypeNode(),

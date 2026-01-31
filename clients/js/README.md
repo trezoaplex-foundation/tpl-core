@@ -1,4 +1,4 @@
-# JavaScript client for Mpl Core
+# JavaScript client for Tpl Core
 
 A Umi-compatible JavaScript library for the trezoa.
 
